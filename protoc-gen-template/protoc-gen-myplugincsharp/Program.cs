@@ -50,6 +50,11 @@ namespace protoc_gen_myplugincsharp
 				var model = new ProtoModel(
 					fileDesc,
 					request.ProtoFile.ToList());
+				//var model = new
+				//{
+				//	File = fileDesc,
+				//	Files = request.ProtoFile
+				//};
 				var scriptObject = new ScriptObject();
 				CustomFunctions.SetupCustomFunction(scriptObject);
 				scriptObject.Import(model);
