@@ -57,7 +57,7 @@ namespace protoc_gen_myplugincsharp
 
 				var filename = filePrefix + fileSuffix;
 
-				var model = new Model{
+				var model = new ProtoModel{
 					File = fileDesc,
 					Files = request.ProtoFile.ToList()
 				};

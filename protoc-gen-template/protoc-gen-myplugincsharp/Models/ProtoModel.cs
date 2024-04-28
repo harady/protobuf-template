@@ -2,9 +2,17 @@
 
 public class ProtoModel
 {
-	public List<FileDescriptorProto> Files { get; set; }
 	public FileDescriptorProto File { get; set; }
+	public List<FileDescriptorProto> Files { get; set; }
 
+	private List<DescriptorProto> _messages = null;
 	public List<DescriptorProto> Messages
-		=> Files.SelectMany(file => file.MessageType.ToList()).ToList();
+		=> _messages
+		?? (_messages = Files.SelectMany(file => file.MessageType.ToList()).ToList());
+
+	public ProtoModel(FileDescriptorProto file, List<FileDescriptorProto> files)
+	{
+		File = file;
+		Files = files;
+	}
 }

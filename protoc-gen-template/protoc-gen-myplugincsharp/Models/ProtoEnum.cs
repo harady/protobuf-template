@@ -2,9 +2,8 @@
 
 public class ProtoEnum
 {
-	public List<FileDescriptorProto> Files { get; set; }
-	public FileDescriptorProto File { get; set; }
+	public ProtoEnum(EnumDescriptorProto data)
+	{
+	}
 
-	public List<DescriptorProto> Messages
-		=> Files.SelectMany(file => file.MessageType.ToList()).ToList();
 }

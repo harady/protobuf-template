@@ -1,14 +1,23 @@
 ﻿using Google.Protobuf.Reflection;
 
-public class ProtoModel
+public class ProtoFile
 {
-	public string Name { get; set; }
-	public string Package { get; set; }
-	public List<string> Dependency { get; set; }
-	public List<int> PublicDependency { get; set; }
-	public List<int> WeakDependency { get; set; }
+	public string Name { get; set; } = string.Empty;
+	public string Package { get; set; } = string.Empty;
+	public List<string> Dependency { get; set; } = new();
+	public List<int> PublicDependency { get; set; } = new();
+	public List<int> WeakDependency { get; set; } = new();
+	public List<ProtoMessage> MessageType { get; set; } = new();
+	public List<ProtoEnum> EnumType { get; set; } = new();
+	public List<ProtoService> Service { get; set; } = new();
 
-	public List<ProtoMessage> MessageType { get; set; }
-	public List<ProtoMessage> MessageType { get; set; }
-	public List<ProtoMessage> MessageType { get; set; }
+	public ProtoFile(FileDescriptorProto data)
+	{
+		Name = data.Name;
+		Package = data.Package;
+		Dependency = data.Dependency.ToList();
+		PublicDependency = data.PublicDependency.ToList();
+		WeakDependency = data.WeakDependency.ToList();
+
+	}
 }
