@@ -2,7 +2,10 @@
 
 public class ProtoField
 {
-	public ProtoField(FieldDescriptorProto data)
+	public ProtoModel Root { get; set; }
+
+	public ProtoField(ProtoModel root, FieldDescriptorProto data)
 	{
+		Root = root;
 	}
 }

@@ -2,8 +2,10 @@
 
 public class ProtoMessage
 {
-	public ProtoMessage(DescriptorProto data)
-	{
+	public ProtoModel Root { get; set; }
 
+	public ProtoMessage(ProtoModel root, DescriptorProto data)
+	{
+		Root = root;
 	}
 }

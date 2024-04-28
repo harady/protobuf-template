@@ -2,9 +2,8 @@
 
 public class ProtoService
 {
-	public List<FileDescriptorProto> Files { get; set; }
-	public FileDescriptorProto File { get; set; }
+	public ProtoService(ProtoService data)
+	{
 
-	public List<DescriptorProto> Messages
-		=> Files.SelectMany(file => file.MessageType.ToList()).ToList();
+	}
 }
