@@ -43,22 +43,12 @@ namespace protoc_gen_myplugincsharp
 			// 出力ファイル名のプレフィックスを取得.
 			foreach (var fileDesc in outputFileDescs) {
 				var filePrefix = Path.GetFileNameWithoutExtension(fileDesc.Name);
-				if (fileNameCase == "Pascal") {
-					filePrefix = filePrefix.ToPascalCase();
-				} else if (fileNameCase == "Camel") {
-					filePrefix = filePrefix.ToCamelCase();
-				} else if (fileNameCase == "Snake") {
-					filePrefix = filePrefix.ToSnakeCase();
-				} else if (fileNameCase == "UpperSnake") {
-					filePrefix = filePrefix.ToUpperSnakeCase();
-				} else {
-					filePrefix = filePrefix.ToPascalCase();
-				}
+				filePrefix = ConvertCase(filePrefix, fileNameCase);
 
 				var filename = filePrefix + fileSuffix;
 
 				var model = new ProtoModel(
-					fileDesc, 
+					fileDesc,
 					request.ProtoFile.ToList());
 				var scriptObject = new ScriptObject();
 				CustomFunctions.SetupCustomFunction(scriptObject);
@@ -84,6 +74,23 @@ namespace protoc_gen_myplugincsharp
 			using (var stdout = Console.OpenStandardOutput()) {
 				response.WriteTo(stdout);
 			}
+		}
+
+		static string ConvertCase(string target, string caseName)
+		{
+			var result = target;
+			if (caseName == "Pascal") {
+				result = result.ToPascalCase();
+			} else if (caseName == "Camel") {
+				result = result.ToCamelCase();
+			} else if (caseName == "Snake") {
+				result = result.ToSnakeCase();
+			} else if (caseName == "UpperSnake") {
+				result = result.ToUpperSnakeCase();
+			} else {
+				result = result.ToPascalCase();
+			}
+			return result;
 		}
 
 		static Dictionary<string, object> ParseParameter(string parameter)
