@@ -57,9 +57,9 @@ namespace protoc_gen_myplugincsharp
 
 				var filename = filePrefix + fileSuffix;
 
-				var model = new {
+				var model = new Model{
 					File = fileDesc,
-					Files = request.ProtoFile
+					Files = request.ProtoFile.ToList()
 				};
 				var scriptObject = new ScriptObject();
 				CustomFunctions.SetupCustomFunction(scriptObject);
