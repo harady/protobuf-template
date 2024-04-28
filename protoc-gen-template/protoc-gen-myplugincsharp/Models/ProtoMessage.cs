@@ -1,4 +1,5 @@
 ﻿using Google.Protobuf.Reflection;
+using Google.Protobuf.WellKnownTypes;
 
 public class ProtoMessage
 {
@@ -24,8 +25,8 @@ public class ProtoMessage
 			.Select(field => new ProtoField(root, field))
 			.ToList();
 		Extension = data.Extension
-			.Select(field => new ProtoField(root, field))
-			.ToList();
+				.Select(field => new ProtoField(root, field))
+				.ToList();
 		NestedType = data.NestedType
 			.Select(message => new ProtoMessage(root, message))
 			.ToList();
