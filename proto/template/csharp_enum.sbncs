@@ -1,0 +1,10 @@
+﻿{{- if (file.enum_type | array.size) > 0 -}}
+{{- for enum in file.enum_type }}
+public enum {{ enum.name }}
+{
+{{- for value in enum.value }}
+	{{ value.name | regex.replace ("^" + enum.name) "" }} = {{ value.number }},
+{{- end }}
+}
+{{ end -}}
+{{ end -}}

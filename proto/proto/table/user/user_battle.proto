@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "data/battle_client.proto";
+import "data/battle_server.proto";
+
+// state: OK 2019/4/6
+// ユーザーバトル情報.
+message UserBattleData {
+    int64 id                                       =   1;
+    int64 user_id                                =   2; // user.id.
+    int64 stage_id                                 =   3; // stage.id
+    int64 continue_count                           =   4; // コンティニュー回数.
+    BattleClientData battle_client_data       =   5; // クライアントに渡すバトル情報.
+    BattleServerData battle_server_data       =   6; // サーバーのみで保持するバトル情報.
+    int64 start_at                                 =   7; // 開始日時.
+
+    reserved "primary_key:id";
+    reserved "index:user_id";
+}

@@ -1,0 +1,39 @@
+﻿■file.message_type
+message.name:UserBackupData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:user_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:backup_type
+    field | to_cs_type:BackupType
+    field.type:Enum
+    field.type_name:.monstershot.BackupType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:backup_token
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type
+enum.name:BackupType
+  value.name:BackupTypeNone
+  value.number:0
+  value.name:BackupTypeCode
+  value.number:1
+  value.name:BackupTypeTwitter
+  value.number:2
+  value.name:BackupTypeLine
+  value.number:3
+

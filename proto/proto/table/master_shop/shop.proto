@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/04/29
+// ショップ情報.
+message ShopData {
+    int64 id                                                =   1;
+    string name                                             =   2; // ショップ名.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+}

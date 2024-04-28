@@ -1,0 +1,13 @@
+﻿syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "table/user/user.proto";
+<imports>
+
+// クライアントに渡されるユーザーデータ.
+message UserUpdateData {
+    UserData user                                                     =   1; // .
+<fields>
+}

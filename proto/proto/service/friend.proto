@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "data/other_user.proto";
+
+service Friend {
+    // フレンド/一覧.
+    rpc List (FriendListRequest) returns (FriendListResponse);
+    // フレンド/削除.
+    rpc Remove (FriendRemoveRequest) returns (FriendRemoveResponse);
+    // フレンド/検索.
+    rpc Search (FriendSearchRequest) returns (FriendSearchResponse);
+    // フレンド/フレンド申請.
+    rpc Request (FriendRequestRequest) returns (FriendRequestResponse);
+}
+
+
+//====================================================================
+// state: OK 2018/12/24
+// フレンド/一覧 リクエスト.
+message FriendListRequest {
+}
+
+// state: OK 2018/12/24
+// フレンド/一覧 レスポンス.
+message FriendListResponse {
+    repeated OtherUserData other_users             =   1; // フレンドユーザー一覧.
+}
+
+
+//====================================================================
+// state: OK 2018/12/24
+// フレンド/削除 リクエスト.
+message FriendRemoveRequest {
+    int64 user_id                                         =   1; // フレンド削除対象ユーザーのID.
+}
+
+// state: OK 2018/12/24
+// フレンド/削除 レスポンス.
+message FriendRemoveResponse {
+}
+
+
+//====================================================================
+// state: OK 2018/12/24
+// フレンド/検索 リクエスト.
+message FriendSearchRequest {
+    int64 code                                              =   1; // ユーザーコード.
+}
+
+// state: OK 2018/12/24
+// フレンド/検索 レスポンス.
+message FriendSearchResponse {
+    OtherUserData other_user                       =   1; // 検索結果のユーザー.
+}
+
+
+//====================================================================
+// state: OK 2018/12/24
+// フレンド/フレンド申請 リクエスト.
+message FriendRequestRequest {
+    int64 user_id                                         =   1; // フレンド申請対象ユーザーのID.
+}
+
+// state: OK 2018/12/24
+// フレンド/フレンド申請 レスポンス.
+message FriendRequestResponse {
+}
+

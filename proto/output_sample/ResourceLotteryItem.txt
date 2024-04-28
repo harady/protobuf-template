@@ -1,0 +1,47 @@
+﻿■file.message_type
+message.name:ResourceLotteryItemData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:resource_lottery_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:weight
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:resource_type
+    field | to_cs_type:ResourceType
+    field.type:Enum
+    field.type_name:.monstershot.ResourceType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:resource_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:resource_amount_min
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:resource_amount_max
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type

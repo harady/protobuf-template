@@ -1,0 +1,59 @@
+﻿■file.message_type
+message.name:StageData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:name
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:quest_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:stamina
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:earn_exp
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:earn_money
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:quest_difficulty_type
+    field | to_cs_type:QuestDifficultyType
+    field.type:Enum
+    field.type_name:.monstershot.QuestDifficultyType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:to_unlock_stage_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:base_stage_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type

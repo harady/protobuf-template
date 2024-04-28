@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// 属性.
+enum UnitAttribute {
+    UnitAttributeNone             =  0;
+    UnitAttributeFire             =  1; // 火.
+    UnitAttributeWater            =  2; // 水.
+    UnitAttributeTree             =  3; // 木.
+    UnitAttributeLight            =  4; // 光.
+    UnitAttributeDark             =  5; // 闇.
+}
+
+// 撃種.
+enum UnitAttackType {
+    UnitAttackTypeNone            =  0;
+    UnitAttackTypeBound           =  1; // 反射.
+    UnitAttackTypePierce          =  2; // 貫通.
+}
+
+// 入手方法.
+enum UnitObtainType {
+    UnitObtainTypeNone            =  0;
+    UnitObtainTypeGacha           =  1; // ガチャ限定.
+    UnitObtainTypeOther           =  2; // その他.
+}
+
+// 進化状態種別.
+enum UnitEvolutionStateType {
+    UnitEvolutionStateTypeNone    =  0;
+}
+
+// state: OK 2018/12/23
+// ユニット情報.
+message UnitData {
+    int64 id                             =   1;
+    string name                          =   2; // ユニット名.
+    int64 number                         =   3; // ユニット番号.
+    int64 base_unit_number               =   4; // ユニット進化系統番号.
+    int64 rarity                         =   5; // レア度.
+    UnitAttribute attribute              =   6; // 属性.
+    UnitAttackType attack_type           =   7; // 撃種. 
+    int64 unit_category_id               =   8; // 種族id. 
+    int64 growth_type                    =   9; // 成長タイプ.
+    int64 max_level                      =  10; // 最大レベル.
+    int64 max_luck                       =  11; // 最大ラック.
+    UnitObtainType obtain_type           =  12; // 入手方法. 
+
+    int64 base_hp                        =  13; // HPの最小値(Lv1時).
+    int64 base_attack                    =  14; // 攻撃力の最小値(Lv1時).
+    int64 base_speed                     =  15; // スピードの最小値(Lv1時).
+    
+    int64 max_hp                         =  16; // HPの最大値(LvMAX時).
+    int64 max_attack                     =  17; // 攻撃力の最大値(LvMAX時).
+    int64 max_speed                      =  18; // スピードの最大値(LvMAX時).
+
+    int64 max_plus_hp                    =  19; // ボーナスHPの最大値.
+    int64 max_plus_attack                =  20; // ボーナス攻撃力の最大値.
+    int64 max_plus_speed                 =  21; // ボーナススピードの最大値.
+
+    int64 skill_id                       =  22; // スキルID.
+    int64 combo1_id                      =  23; // 友情コンボ1ID.
+    int64 combo2_id                      =  24; // 友情コンボ2ID.
+    int64 ability1_id                    =  25; // アビリティ1ID.
+    int64 ability2_id                    =  26; // アビリティ2ID.
+    int64 ability3_id                    =  27; // アビリティ3ID.
+    int64 ability4_id                    =  28; // アビリティ4ID.
+    int64 ability5_id                    =  29; // アビリティ5ID.
+    
+    int64 equipment_slot_count           =  30; // 装備スロット数.
+    int64 sale_price                     =  31; // 売却額.
+    int64 baseExp                        =  32; // 強化素材として使用した際のベース経験値.
+
+    reserved "primary_key:id";
+    reserved "index:base_unit_number";
+    reserved "tag:is_client_master";
+}

@@ -1,0 +1,2 @@
+﻿・{ "name": "config_data", "field": [ { "name": "id", "number": 1, "label": "label_optional", "type": "type_int64", "json_name": "id" }, { "name": "key", "number": 2, "label": "label_optional", "type": "type_string", "json_name": "key" }, { "name": "value", "number": 3, "label": "label_optional", "type": "type_int64", "json_name": "value" }, { "name": "text", "number": 4, "label": "label_optional", "type": "type_string", "json_name": "text" } ], "reserved_name": [ "tag:is_client_master", "primary_key:id", "unique_index:key" ] }s
+id	key	value	text	

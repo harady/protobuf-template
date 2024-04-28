@@ -1,0 +1,35 @@
+﻿■file.message_type
+message.name:UserUnitCollectionData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:user_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:unit_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:has_earned
+    field | to_cs_type:bool
+    field.type:Bool
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:used_count
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type

@@ -1,0 +1,101 @@
+﻿■file.message_type
+message.name:UserUnitData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:user_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:unit_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:level
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:exp
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:luck
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:plus_hp
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:plus_attack
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:plus_speed
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:equipment1_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:equipment2_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:equipment3_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:hero_mark
+    field | to_cs_type:bool
+    field.type:Bool
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:hero_badge
+    field | to_cs_type:bool
+    field.type:Bool
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:is_locked
+    field | to_cs_type:bool
+    field.type:Bool
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:get_at
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type

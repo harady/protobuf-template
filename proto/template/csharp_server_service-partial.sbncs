@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Amazon.Lambda.Core;
+
+namespace AwsDotnetCsharp
+{
+{{- for service in file.service }}
+{{- serviceName = (service.name + "Service") }}
+	public partial class {{ serviceName }} : {{ serviceName }}Base
+	{
+{{ for method in service.method }}
+		public override async Task<{{ method.output_type | to_short_name }}> {{ method.name }}Impl(
+			{{ method.input_type | to_short_name }} request, ILambdaContext context)
+		{
+			await Task.Run(() => Console.WriteLine("{{ method.name }}Impl is not implemented"));
+			var result = new {{ method.output_type | to_short_name }}();
+			return result;
+		}
+{{ end }}
+	}
+{{ end -}}
+}

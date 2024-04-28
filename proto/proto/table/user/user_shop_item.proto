@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2018/12/23
+// プレイヤーショップ商品情報.
+message UserShopItemData {
+    int64 id                                       =   1;
+    int64 user_id                                =   2; // ユーザーID.
+    int64 shop_item_id                             =   3; // ショップ商品のID.
+    int64 shop_schedule_id                         =   4; // ショップスケジュールのID.
+    int64 purchased_count                          =   5; // 購入回数.
+
+    reserved "primary_key:id";
+    reserved "index:user_id";
+    reserved "index:shop_item_id";
+    reserved "tag:is_client_user_data";
+}

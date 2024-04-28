@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/05/02 定期的に見直す
+// 敵配置情報.
+message EnemyMappingData {
+    int64 id                                      =   1;
+    int64 round_id                                =   2; // ラウンド.
+    int64 enemy_id                                =   3; // 敵ID.
+    int64 pos_x                                   =   4; // 初期配置位置x.
+    int64 pos_y                                   =   5; // 初期配置位置y.
+    int64 drop_rate                               =   6; // 報酬ドロップ率(千分率).
+    int64 reward_resource_lottery_id              =   7; // ドロップ報酬のリソース抽選の[resource_lottery.id].
+
+    reserved "primary_key:id";
+    reserved "tag:is_master";
+    reserved "index:round_id";
+}

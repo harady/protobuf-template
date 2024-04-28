@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "data/other_user.proto";
+
+service FriendRequest {
+    // フレンドリクエスト/一覧.
+    rpc List (FriendRequestListRequest) returns (FriendRequestListResponse);
+    // フレンドリクエスト/受諾.
+    rpc Accept (FriendRequestAcceptRequest) returns (FriendRequestAcceptResponse);
+    // フレンドリクエスト/拒否.
+    rpc Reject (FriendRequestRejectRequest) returns (FriendRequestRejectResponse);
+}
+
+//====================================================================
+// state: OK 2018/12/24
+// フレンドリクエスト/一覧 リクエスト.
+message FriendRequestListRequest {
+}
+
+// state: OK 2018/12/24
+// フレンドリクエスト/一覧 レスポンス.
+message FriendRequestListResponse {
+    repeated OtherUserData other_users             =   1; // 自分宛てにフレンド申請中のユーザー一覧.
+}
+
+
+//====================================================================
+// state: OK 2018/12/24
+// フレンドリクエスト/受諾 リクエスト.
+message FriendRequestAcceptRequest {
+    int64 user_id                                         =   1; // フレンド申請を受諾対象のユーザーID.
+}
+
+// state: OK 2018/12/24
+// フレンドリクエスト/受諾 レスポンス.
+message FriendRequestAcceptResponse {
+}
+
+
+//====================================================================
+// state: OK 2018/12/24
+// フレンドリクエスト/拒否 リクエスト.
+message FriendRequestRejectRequest {
+    int64 user_id                                         =   1; // フレンド申請を拒否対象のユーザーID.
+}
+
+// state: OK 2018/12/24
+// フレンドリクエスト/拒否 レスポンス.
+message FriendRequestRejectResponse {
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/01/02
+// ユーザーフレンド情報.
+message UserFriendData {
+    int64 id                                       =   1; 
+    int64 user_id                                =   2; // ユーザーID.
+    int64 friend_user_id                         =   3; // フレンドのユーザーID.
+    bool is_favorite                               =   4; // お気に入り設定ON/OFF.
+    int64 last_used_at                             =   5; // このフレンドを最後に助っ人として使用した日時.
+    int64 used_count                               =   6; // このフレンドを助っ人して使用した回数.
+
+    reserved "primary_key:id";
+    reserved "index:user_id";
+    reserved "index:friend_user_id";
+}

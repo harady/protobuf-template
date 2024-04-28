@@ -1,0 +1,80 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+
+using Amazon.Lambda.Core;
+using Amazon.Lambda.APIGatewayEvents;
+
+//GENERATED CODE, DO NOT EDIT !
+namespace AwsDotnetCsharp
+{
+{{- for service in file.service }}
+	public partial class {{ service.name }}ServiceBase : ServiceBase
+	{
+{{ for method in service.method }}
+		#region {{ method.name }}
+		public async Task<APIGatewayProxyResponse> {{ method.name }}(
+			APIGatewayProxyRequest request, ILambdaContext context)
+		{
+			var apiRequest = GetApiRequest<{{ method.input_type | to_short_name }}>(request);
+			Console.WriteLine("{{ service.name }}/{{ method.name }} apiRequest=" + JsonConvert.SerializeObject(apiRequest));
+
+			await MongoSessionManager.StartSessionAsync();
+			MongoSessionManager.StartTransaction();
+
+			object apiResponse;
+			try {
+				apiResponse = await {{ method.name }}Impl(apiRequest, context);
+				await MongoSessionManager.CommitTransactionAsync();
+			}
+			catch (APIException e) {
+				apiResponse = e.apiError;
+				context.Logger.Log(e.Message + "\n" + e.StackTrace);
+				await MongoSessionManager.AbortTransactionAsync();
+			}
+			catch (Exception e) {
+				apiResponse = APIError.GetDefaultError(e.Message, e.StackTrace);
+				context.Logger.Log(e.Message + "\n" + e.StackTrace);
+				await MongoSessionManager.AbortTransactionAsync();
+			}
+			await SendSlackIfError(apiResponse);
+			Console.WriteLine("{{ service.name }}/{{ method.name }} apiResponse=" + JsonConvert.SerializeObject(apiResponse));
+			var response = GetAPIGatewayProxyResponse(apiResponse);
+			return response;
+		}
+
+		public virtual async Task<{{ method.output_type | to_short_name }}> {{ method.name }}Impl(
+			{{ method.input_type | to_short_name }} request, ILambdaContext context)
+		{
+			await Task.Run(() => Console.WriteLine("{{ method.name }}Impl is not implemented"));
+			return new {{ method.output_type | to_short_name }}();
+		}
+		#endregion // {{ method.name }}
+{{- end }}
+	}
+{{ end -}}	
+	
+{{- for message in file.message_type }}
+	{{- if (message.name | string.ends_with "Response") }}
+	[JsonObject(MemberSerialization.OptIn)]
+	public partial class {{ message.name }} : APIResponse
+	{
+	{{- else }}
+	[JsonObject(MemberSerialization.OptIn)]
+	public partial class {{ message.name }} : APIRequest
+	{
+	{{- end }}
+	{{- for field in message.field }}
+		[JsonProperty("{{ field.name }}")]
+{{- if !(field | is_repeated) }}
+		public {{ field | to_cs_type }} {{ field.name | to_camel }} { get; set; }
+{{- else }}
+		public List<{{ field | to_cs_type }}> {{ field.name | to_camel }} { get; set; } = new List<{{ field | to_cs_type }}>();
+{{- end }}
+{{- end }}
+	}
+{{ end -}}
+}

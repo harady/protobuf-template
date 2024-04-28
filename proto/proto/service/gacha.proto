@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "data/gacha_result_item.proto";
+
+service Gacha {
+    rpc Draw (GachaDrawRequest) returns (GachaDrawResponse);
+}
+
+
+//====================================================================
+// state: OK 2019/04/28
+// ガチャ/ドロー リクエスト.
+message GachaDrawRequest {
+    int64 gacha_button_id                                   =   1; // 
+}
+
+// state: OK 2019/04/28
+// ガチャ/ドロー レスポンス.
+message GachaDrawResponse {
+    repeated GachaResultItemData gacha_result_items    =   1; // 抽選結果のGachaResultItemリスト.
+}

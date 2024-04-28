@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2018/12/23
+// プレイヤーアイテム情報.
+message UserItemData {
+    int64 id                                       =   1;
+    int64 user_id                                =   2; // ユーザーID.
+    int64 item_id                                  =   3; // アイテムID.
+    int64 amount                                   =   4; // 所持数.
+
+    reserved "primary_key:id";
+    reserved "index:user_id";
+    reserved "unique_index:item_id";
+    reserved "tag:is_client_user_data";
+}

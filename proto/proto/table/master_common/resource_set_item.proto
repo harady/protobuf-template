@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+import "enum/common.proto";
+
+// state: OK 2018/12/23
+// ResourceSetに含まれる要素情報.
+message ResourceSetItemData {
+    int64 id                                      =   1;
+    int64 resource_set_id                         =   2; // このResourceSetItemが含まれるresource_setのid
+    ResourceType resource_type                    =   3; // ResourceType
+    int64 resource_id                             =   4; // ResourceId
+    int64 resource_amount                         =   5; // ResourceAmount
+
+    reserved "tag:is_client_master";
+    reserved "primary_key:id";
+    reserved "index:resource_set_id";
+}

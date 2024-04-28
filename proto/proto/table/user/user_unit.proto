@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2018/12/23
+// プレイヤーユニット情報.
+message UserUnitData {
+    int64 id                                       =   1;
+    int64 user_id                                =   2; // ユーザーID.
+    int64 unit_id                                  =   3; // ユニットID.
+
+    int64 level                                    =   4; // レベル.
+    int64 exp                                      =   5; // 経験値.
+    int64 luck                                     =   6; // ラック.
+
+    int64 plus_hp                                  =   7; // HP+値.
+    int64 plus_attack                              =   8; // 攻撃力+値.
+    int64 plus_speed                               =   9; // スピード+値.
+
+    int64 equipment1_id                            =  10; // 装備1のequipment.id.
+    int64 equipment2_id                            =  11; // 装備2のequipment.id.
+    int64 equipment3_id                            =  12; // 装備3のequipment.id.
+    
+    bool hero_mark                                 =  13; // 英雄の書.
+    bool hero_badge                                =  14; // 英雄の証.
+    
+    bool is_locked                                 =  15; // ロック状態
+    
+    int64 get_at                                   =  16; // 獲得日時.
+
+    reserved "primary_key:id";
+    reserved "index:user_id";
+    reserved "index:unit_id";
+    reserved "tag:is_client_user_data";
+}

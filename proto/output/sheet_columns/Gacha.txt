@@ -1,0 +1,2 @@
+﻿・{ "name": "gacha_data", "field": [ { "name": "id", "number": 1, "label": "label_optional", "type": "type_int64", "json_name": "id" }, { "name": "name", "number": 2, "label": "label_optional", "type": "type_string", "json_name": "name" }, { "name": "base_gacha_id", "number": 3, "label": "label_optional", "type": "type_int64", "json_name": "base_gacha_id" }, { "name": "is_premium", "number": 4, "label": "label_optional", "type": "type_bool", "json_name": "is_premium" } ], "reserved_name": [ "primary_key:id", "tag:is_client_master" ] }s
+id	name	baseGachaId	isPremium	

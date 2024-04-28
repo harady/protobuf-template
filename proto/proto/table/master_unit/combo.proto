@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/07/28
+// TODO:友情コンボ種別追加の都度修正する
+// 友情コンボ種別.
+enum ComboType {
+    ComboTypeNone                                           =    0;
+    ComboTypeLockOnOneWayBeam                               =  101; // ロックオンワンウェイビーム.
+    ComboTypeVerticalBeam                                   =  102; // バーティカルビーム.
+    ComboTypeHorizontalBeam                                 =  103; // ホリゾンタルビーム.
+    ComboTypePlusBeam                                       =  104; // 十字ビーム.
+    ComboTypeCrossBeam                                      =  105; // クロスビーム.
+    ComboTypeEightWayBeam                                   =  106; // 八方向ビーム.
+    ComboTypeDunkBeam                                       =  107; // ダンクビーム.
+    ComboTypeLockOnFunBeam                                  =  108; // ロックオン扇ビーム.
+    ComboTypeFixFunBeam                                     =  109; // 固定扇ビーム.
+    ComboTypeDunkFunBeam                                    =  110; // 進行方向扇ビーム.
+//    ComboTypeDunkReflectionBeam                             =  111; // ダンク反射ビーム.
+//    ComboTypeLockOnReflectionBeam                           =  112; // ロックオン反射ビーム.
+//    ComboTypeReflectionCrossBeam                            =  113; // 反射クロスビーム.
+    ComboTypeAllEnemyLockOnBeam                             =  114; // 全敵ロックオンビーム.
+//    ComboTypeLockOnTwinBeam                                 =  115; // ロックオンツインビーム.
+//    ComboTypeTwinDunkReflectionBeam                         =  116; // ツインダンクビーム.
+//    ComboTypeLockOnTwinReflectionBeam                       =  117; // ロックオンツイン反射ビーム.
+//    ComboTypeTwinDunkBeam                                   =  118; // ツインダンク反射ビーム.
+    ComboTypeAuraBullet                                     =  201; // 気功弾/連続気功弾..
+    ComboTypeRandomAuraBullet                               =  202; // 乱射気功弾.
+//    ComboTypeChargeAuraBullet                               =  203; // 溜め気功弾.
+//    ComboTypePierceAuraBullet                               =  204; // 貫通気功弾/連続貫通気功弾.
+    ComboTypeHomingBullet                                   =  301; // 追尾弾.
+    ComboTypePierceHomingBullet                             =  302; // 貫通追尾弾.
+    ComboTypeShotgun                                        =  401; // 散弾.
+    ComboTypePierceShotgun                                  =  402; // 貫通散弾.
+//    ComboTypeReflectionShotgun                              =  403; // 反射散弾.
+    ComboTypeShortDiffusionBullet                           =  501; // 近距離拡散弾.
+    ComboTypeDiffusionBullet                                =  502; // 反射拡散弾.
+    ComboTypePierceDiffusionBullet                          =  503; // 貫通拡散弾.
+//    ComboTypeReflectionDiffusionBullet                      =  504; // 反転拡散弾.
+//    ComboTypeFunDiffusionBullet                             =  505; // 扇拡散弾.
+    ComboTypeShockWaveBullet                                =  601; // 衝撃波弾.
+    ComboTypePireceShockWaveBullet                          =  602; // 貫通衝撃波弾.
+//    ComboTypeAllEnemyShockWaveBullet                        =  603; // 全敵衝撃波弾.
+//    ComboTypeAllEnemyPireceShockWaveBullet                  =  604; // 全敵貫通衝撃波弾.
+//    ComboTypeWeakPointShockWaveBullet                       =  605; // 弱点衝撃波弾.
+//    ComboTypeWeakPointPireceShockWaveBullet                 =  606; // 弱点貫通衝撃波弾.
+    ComboTypeMeteorBullet                                   =  701; // 隕石弾.
+    ComboTypeAllEnemyMeteorBullet                           =  702; // 全敵隕石弾.
+//    ComboTypeBurstMeteorBullet                              =  703; // 爆発隕石弾.
+//    ComboTypeAllEnemyBurstMeteorBullet                      =  704; // 全敵爆発隕石弾.
+//    ComboTypeRandomBurstMeteorBullet                        =  705; // ランダム爆破隕石弾.
+//    ComboTypeContinuousSlash                                =  801; // 連続斬撃.
+//    ComboTypeContinuousWarpSlash                            =  802; // 連続次元斬.
+//    ComboTypeSlashBullet                                    =  803; // 飛翔斬撃弾.
+//    ComboTypeWhirlSlash                                     =  804; // 回転斬り.
+//    ComboTypeRightFist                                      =  901; // 正拳突き.
+//    ComboTypeRoundhouseKick                                 =  902; // 回し蹴り.
+//    ComboTypeContinuousPunch                                =  903; // 連続パンチ.
+//    ComboTypeContinuousKick                                 =  904; // 連続キック.
+    ComboTypeAuraBurst                                      = 1001; // オーラバースト.
+//    ComboTypeEnergyCircle                                   = 1002; // エネルギーサークル.
+//    ComboTypeEnergyBomb                                     = 1003; // エナジーボム.
+//    ComboTypeExplosion                                      = 1004; // エクスプロージョン.
+//    ComboTypeEnergyChain                                    = 1101; // エナジーチェーン.
+}
+
+// state: OK 2019/05/05
+// 友情コンボ情報.
+message ComboData {
+    int64 id                             =   1; // ID.
+    string name                          =   2; // 名前.
+    ComboType type                       =   3; // 友情コンボ種別.
+    string description                   =   4; // 説明.
+    int64 rank                           =   5; // ランク(1～4).
+    int64 base_attack                    =   6; // レベル1時の威力.
+    int64 max_attack                     =   7; // レベル99時の威力.
+    int64 param_a                        =   8; // パラメータA.
+    int64 param_b                        =   9; // パラメータB.
+    int64 param_c                        =  10; // パラメータC.
+    int64 icon_id                        =  11; // アイコンID.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+}

@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "enum/common.proto";
+
+// state: OK 2019/04/29
+// ショップ商品情報.
+message ShopItemData {
+    int64 id                                                =   1;
+    string name                                             =   2; // 商品名.
+    int64 shop_id                                           =   3; // ショップ名.
+    PurchasePlatformType purchase_platform_type             =   4; // 課金プラットフォーム.
+    string platform_product_id                              =   5; // プラットフォーム毎の商品ID.
+    int64 price                                             =   6; // この商品の金額(yen).
+    int64 resource_set_id                                   =   7; // 獲得できる商品.
+    int64 limit_count                                       =   8; // 1開催(スケジュール)毎の購入制限回数.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+    reserved "unique_index:platform_product_id";
+    reserved "index:shop_id";
+}

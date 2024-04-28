@@ -1,0 +1,53 @@
+﻿■file.message_type
+message.name:ShopItemData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:name
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:shop_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:purchase_platform_type
+    field | to_cs_type:PurchasePlatformType
+    field.type:Enum
+    field.type_name:.monstershot.PurchasePlatformType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:platform_product_id
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:price
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:resource_set_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:limit_count
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type

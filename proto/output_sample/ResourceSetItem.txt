@@ -1,0 +1,35 @@
+﻿■file.message_type
+message.name:ResourceSetItemData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:resource_set_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:resource_type
+    field | to_cs_type:ResourceType
+    field.type:Enum
+    field.type_name:.monstershot.ResourceType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:resource_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:resource_amount
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type

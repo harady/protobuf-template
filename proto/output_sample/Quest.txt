@@ -1,0 +1,59 @@
+﻿■file.message_type
+message.name:QuestData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:name
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:quest_group_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:noContinue
+    field | to_cs_type:bool
+    field.type:Bool
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:quest_difficulty_type
+    field | to_cs_type:QuestDifficultyType
+    field.type:Enum
+    field.type_name:.monstershot.QuestDifficultyType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:boss_unit_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:open_at
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:close_at
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:open_dow
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type

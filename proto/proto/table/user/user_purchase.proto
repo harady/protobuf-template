@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "enum/common.proto";
+import "service/shop.proto";
+
+// state: OK 2020/01/02
+// ユーザー課金情報.
+message UserPurchaseData {
+    int64 id                                                          =   1;
+    int64 user_id                                                   =   2; // ユーザーID.
+    PurchasePlatformType purchase_platform_type                       =   3; // 課金プラットフォーム.
+    int64 shop_item_id                                                =   4; // ショップアイテムID.
+    int64 price                                                       =   5; // 購入金額.
+    ShopPurchaseGooglePlayRequest google_play_request                 =   6; // GooglePlay購入リクエスト情報.
+    ShopPurchaseAppStoreRequest app_store_request                     =   7; // AppStore購入リクエスト情報.
+    ShopPurchaseDebugRequest debug_request                            =   8; // Debug購入リクエスト情報.
+    bool is_receipt_inquired                                          =   9; // レシート照会済みか否か.
+    bool is_resource_granted                                          =  10; // リソース付与済みか否か.
+    int64 purchase_at                                                 =  11; // 購入日時.
+
+    reserved "primary_key:id";
+    reserved "index:user_id";
+}

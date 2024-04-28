@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "data/resource.proto";
+
+// state: OK 2020/01/02
+// ガチャ結果アイテム.
+message GachaResultItemData {
+    ResourceData resource                                   =   1; // ガチャで引いたリソース(主にプレーヤーユニット).
+    bool is_extra                                           =   2; // おまけ抽選枠か否か.
+    bool is_pickup                                          =   3; // ピックアップ枠か否か.
+    bool is_guarantee                                       =   4; // 保証抽選から排出されるか否か.
+}

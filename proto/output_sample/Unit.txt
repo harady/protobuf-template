@@ -1,0 +1,231 @@
+﻿■file.message_type
+message.name:UnitData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:name
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:number
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:base_unit_number
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:rarity
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:attribute
+    field | to_cs_type:UnitAttribute
+    field.type:Enum
+    field.type_name:.monstershot.UnitAttribute
+    field.label:Optional
+    field | is_repeated:false
+  field.name:attack_type
+    field | to_cs_type:UnitAttackType
+    field.type:Enum
+    field.type_name:.monstershot.UnitAttackType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:unit_category_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:growth_type
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:max_level
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:max_luck
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:obtain_type
+    field | to_cs_type:UnitObtainType
+    field.type:Enum
+    field.type_name:.monstershot.UnitObtainType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:base_hp
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:base_attack
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:base_speed
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:max_hp
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:max_attack
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:max_speed
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:max_plus_hp
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:max_plus_attack
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:max_plus_speed
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:skill_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:combo1_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:combo2_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:ability1_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:ability2_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:ability3_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:ability4_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:ability5_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:equipment_slot_count
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:sale_price
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:baseExp
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type
+enum.name:UnitAttribute
+  value.name:UnitAttributeNone
+  value.number:0
+  value.name:UnitAttributeFire
+  value.number:1
+  value.name:UnitAttributeWater
+  value.number:2
+  value.name:UnitAttributeTree
+  value.number:3
+  value.name:UnitAttributeLight
+  value.number:4
+  value.name:UnitAttributeDark
+  value.number:5
+
+enum.name:UnitAttackType
+  value.name:UnitAttackTypeNone
+  value.number:0
+  value.name:UnitAttackTypeBound
+  value.number:1
+  value.name:UnitAttackTypePierce
+  value.number:2
+
+enum.name:UnitObtainType
+  value.name:UnitObtainTypeNone
+  value.number:0
+  value.name:UnitObtainTypeGacha
+  value.number:1
+  value.name:UnitObtainTypeOther
+  value.number:2
+
+enum.name:UnitEvolutionStateType
+  value.name:UnitEvolutionStateTypeNone
+  value.number:0
+

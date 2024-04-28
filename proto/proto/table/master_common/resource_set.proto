@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: TODO
+// アイテム種別.
+enum ResourceSetType {
+    ResourceSetTypeNone                        =   0;
+    ResourceSetTypeEvolutionMaterial           =   1; // 進化素材.
+}
+
+
+// state: OK 2018/12/23
+// ResourceSet情報.
+message ResourceSetData {
+    int64 id                             =   1;
+    string name                          =   2; // リソースセット情報.
+
+    reserved "tag:is_client_master";
+    reserved "primary_key:id";
+}

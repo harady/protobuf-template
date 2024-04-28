@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "data/battle_reward_resource.proto";
+
+// state: OK 2019/11/17.
+// バトル報酬のクエスト報酬情報.
+message BattleRewardsQuestRewardsData {
+    int64 earned_money                                                =   1; // 獲得マネー.
+    int64 earned_exp                                                  =   2; // 獲得経験値.
+    repeated BattleRewardResourceData battle_reward_resources         =   3; // 獲得リソースリスト.
+}

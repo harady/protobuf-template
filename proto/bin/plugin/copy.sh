@@ -1,0 +1,1 @@
+cp protoc-gen-template.exe protoc-gen-csharp-template

@@ -1,0 +1,6 @@
+﻿{{- if (file.message_type | array.size) > 0 -}}
+{{- for message in file.message_type -}}
+・{{ message | regex.replace "Data$" ""  | to_snake }}s
+{{ for field in message.field -}}{{ field.name | to_camel }}	{{ end }}
+{{- end -}}
+{{- end }}

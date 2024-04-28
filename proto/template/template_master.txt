@@ -1,0 +1,13 @@
+﻿syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "data/client_master.proto";
+<imports>
+
+// サーバーでメモリキャッシュするマスターデータ.
+message MasterData {
+    ClientMasterData client_master                               =   1; // .
+<fields>
+}

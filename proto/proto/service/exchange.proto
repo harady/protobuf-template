@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+service Exchange {
+    // 交換所/交換.
+    rpc Exchange (ExchangeExchangeRequest) returns (ExchangeExchangeResponse);
+}
+
+
+//====================================================================
+// state: OK 2019/05/01
+// 交換所/交換 リクエスト.
+message ExchangeExchangeRequest {
+    int64 exchange_item_id                            =   1; // 交換する交換所商品のID.
+    int64 exchange_count                              =   2; // 交換する数.
+}
+
+// state: OK 2019/04/30
+// 交換所/交換 レスポンス.
+message ExchangeExchangeResponse {
+}

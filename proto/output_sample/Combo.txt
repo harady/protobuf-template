@@ -1,0 +1,125 @@
+﻿■file.message_type
+message.name:ComboData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:name
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:type
+    field | to_cs_type:ComboType
+    field.type:Enum
+    field.type_name:.monstershot.ComboType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:description
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:rank
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:base_attack
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:max_attack
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:param_a
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:param_b
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:param_c
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:icon_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type
+enum.name:ComboType
+  value.name:ComboTypeNone
+  value.number:0
+  value.name:ComboTypeLockOnOneWayBeam
+  value.number:101
+  value.name:ComboTypeVerticalBeam
+  value.number:102
+  value.name:ComboTypeHorizontalBeam
+  value.number:103
+  value.name:ComboTypePlusBeam
+  value.number:104
+  value.name:ComboTypeCrossBeam
+  value.number:105
+  value.name:ComboTypeEightWayBeam
+  value.number:106
+  value.name:ComboTypeDunkBeam
+  value.number:107
+  value.name:ComboTypeLockOnFunBeam
+  value.number:108
+  value.name:ComboTypeFixFunBeam
+  value.number:109
+  value.name:ComboTypeDunkFunBeam
+  value.number:110
+  value.name:ComboTypeAllEnemyLockOnBeam
+  value.number:114
+  value.name:ComboTypeAuraBullet
+  value.number:201
+  value.name:ComboTypeRandomAuraBullet
+  value.number:202
+  value.name:ComboTypeHomingBullet
+  value.number:301
+  value.name:ComboTypePierceHomingBullet
+  value.number:302
+  value.name:ComboTypeShotgun
+  value.number:401
+  value.name:ComboTypePierceShotgun
+  value.number:402
+  value.name:ComboTypeShortDiffusionBullet
+  value.number:501
+  value.name:ComboTypeDiffusionBullet
+  value.number:502
+  value.name:ComboTypePierceDiffusionBullet
+  value.number:503
+  value.name:ComboTypeShockWaveBullet
+  value.number:601
+  value.name:ComboTypePireceShockWaveBullet
+  value.number:602
+  value.name:ComboTypeMeteorBullet
+  value.number:701
+  value.name:ComboTypeAllEnemyMeteorBullet
+  value.number:702
+  value.name:ComboTypeAuraBurst
+  value.number:1001
+

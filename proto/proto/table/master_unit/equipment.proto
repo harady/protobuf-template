@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// 装備種別.
+enum EquipmentType {
+    EquipmentTypeNone                            =   0;
+}
+
+// state: OK 2018/12/23
+// 装備情報.
+message EquipmentData {
+    int64 id                             =   1; // ID.
+    string name                          =   2; // 名前.
+    EquipmentType type                   =   3; // 装備種別.
+    string description                   =   4; // 説明.
+    int64 param_a                        =   5; // パラメータA.
+    int64 param_b                        =   6; // パラメータB.
+    int64 icon_id                        =   7; // アイコンID.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+}

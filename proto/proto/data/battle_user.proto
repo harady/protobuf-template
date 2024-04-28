@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "data/other_user.proto";
+
+// state: OK 2019/12/28.
+// バトル情報のユーザー情報.
+message BattleUserData {
+    OtherUserData other_user                              =   1; // ユーザー情報.
+    repeated int64 user_unit_ids                          =   2; // ユーザーユニットIDリスト.
+}

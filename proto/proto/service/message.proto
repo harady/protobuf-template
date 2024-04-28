@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+
+// メッセージ.
+service Message {
+    // メッセージ/一覧.
+    rpc List (MessageListRequest) returns (MessageListResponse);
+    // メッセージ/報酬受取.
+    rpc Receive (MessageReceiveRequest) returns (MessageReceiveResponse);
+}
+
+
+//====================================================================
+// state: OK 2019/01/01
+// メッセージ/一覧 リクエスト.
+message MessageListRequest {
+}
+
+// state: OK 2019/01/01
+// メッセージ/報酬受取 レスポンス.
+message MessageListResponse {
+}
+
+
+//====================================================================
+// state: OK 2019/01/01
+// メッセージ/報酬受取 リクエスト.
+message MessageReceiveRequest {
+    int64 user_message_id                       =   1; // 受け取るメッセージのuser_message.id.
+}
+
+// state: OK 2019/01/01
+// メッセージ/報酬受取 レスポンス.
+message MessageReceiveResponse {
+}

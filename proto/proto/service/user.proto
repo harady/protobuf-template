@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+service User {
+    // ユーザー/データリスト.
+    rpc DataList (UserDataListRequest) returns (UserDataListResponse);
+    // ユーザー/名前変更.
+    rpc NameEdit (UserNameEditRequest) returns (UserNameEditResponse);
+}
+
+
+//====================================================================
+// state: OK 2018/12/30
+// ユーザー/データリスト リクエスト.
+message UserDataListRequest {
+}
+
+// state: OK 2018/12/30
+// ユーザー/データリスト レスポンス.
+message UserDataListResponse {
+}
+
+
+//====================================================================
+// state: OK 2018/12/30
+// ユーザー/名前変更 リクエスト.
+message UserNameEditRequest {
+    string name                                   =   1; // 変更後のユーザー名.
+}
+
+// state: OK 2018/12/30
+// ユーザー/名前変更 レスポンス.
+message UserNameEditResponse {
+}

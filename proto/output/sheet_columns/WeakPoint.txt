@@ -1,0 +1,2 @@
+﻿・{ "name": "weak_point_data", "field": [ { "name": "id", "number": 1, "label": "label_optional", "type": "type_int64", "json_name": "id" }, { "name": "name", "number": 2, "label": "label_optional", "type": "type_string", "json_name": "name" } ], "reserved_name": [ "primary_key:id", "tag:is_client_master" ] }s
+id	name	

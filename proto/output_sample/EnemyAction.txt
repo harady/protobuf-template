@@ -1,0 +1,111 @@
+﻿■file.message_type
+message.name:EnemyActionData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:enemy_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:action_no
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:trigger_type
+    field | to_cs_type:TriggerType
+    field.type:Enum
+    field.type_name:.monstershot.TriggerType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:trigger_param_a
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:trigger_param_b
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:trigger_param_c
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:trigger_param_d
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:action_type
+    field | to_cs_type:ActionType
+    field.type:Enum
+    field.type_name:.monstershot.ActionType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:action_param_a
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:action_param_b
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:action_param_c
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:action_param_d
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type
+enum.name:TriggerType
+  value.name:TriggerTypeNone
+  value.number:0
+  value.name:TriggerTypeUnitPowerup
+  value.number:1
+  value.name:TriggerTypeUnitEvolution
+  value.number:2
+  value.name:TriggerTypeStaminaRecover
+  value.number:3
+  value.name:TriggerTypeQuestTicket
+  value.number:4
+  value.name:TriggerTypeEventPoint
+  value.number:5
+
+enum.name:ActionType
+  value.name:ActionTypeNone
+  value.number:0
+  value.name:ActionTypeUnitPowerup
+  value.number:1
+  value.name:ActionTypeUnitEvolution
+  value.number:2
+  value.name:ActionTypeStaminaRecover
+  value.number:3
+  value.name:ActionTypeQuestTicket
+  value.number:4
+  value.name:ActionTypeEventPoint
+  value.number:5
+

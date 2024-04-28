@@ -1,0 +1,173 @@
+﻿■file.message_type
+message.name:AbilityData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:name
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:category
+    field | to_cs_type:AbilityCategory
+    field.type:Enum
+    field.type_name:.monstershot.AbilityCategory
+    field.label:Optional
+    field | is_repeated:false
+  field.name:type
+    field | to_cs_type:AbilityType
+    field.type:Enum
+    field.type_name:.monstershot.AbilityType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:description
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:target
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:param_a
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:param_b
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:param_c
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type
+enum.name:AbilityType
+  value.name:AbilityTypeNone
+  value.number:0
+  value.name:AbilityTypeAntiGimmickGravityFieldGuard
+  value.number:1011
+  value.name:AbilityTypeAntiGimmickGravityFieldBreak
+  value.number:1012
+  value.name:AbilityTypeAntiGimmickGravityFieldHeal
+  value.number:1013
+  value.name:AbilityTypeAntiGimmickGravityFieldBoost
+  value.number:1014
+  value.name:AbilityTypeAntiGimmickGravityFieldAccel
+  value.number:1015
+  value.name:AbilityTypeAntiGimmickDamageBarrierGuard
+  value.number:1021
+  value.name:AbilityTypeAntiGimmickDamageBarrierBreak
+  value.number:1022
+  value.name:AbilityTypeAntiGimmickDamageBarrierHeal
+  value.number:1023
+  value.name:AbilityTypeAntiGimmickDamageBarrierBoost
+  value.number:1024
+  value.name:AbilityTypeAntiGimmickDamageBarrierAccel
+  value.number:1025
+  value.name:AbilityTypeAntiGimmickWarpHoleIgnore
+  value.number:1031
+  value.name:AbilityTypeAntiGimmickWarpHoleBreak
+  value.number:1032
+  value.name:AbilityTypeAntiGimmickWarpHoleHeal
+  value.number:1033
+  value.name:AbilityTypeAntiGimmickWarpHoleBoost
+  value.number:1034
+  value.name:AbilityTypeAntiGimmickWarpHoleAccel
+  value.number:1035
+  value.name:AbilityTypeAntiGimmickMineBombGuard
+  value.number:1041
+  value.name:AbilityTypeAntiGimmickMineBombBreak
+  value.number:1042
+  value.name:AbilityTypeAntiGimmickMineBombHeal
+  value.number:1043
+  value.name:AbilityTypeAntiGimmickMineBombBoost
+  value.number:1044
+  value.name:AbilityTypeAntiGimmickMineBombAccel
+  value.number:1045
+  value.name:AbilityTypeAntiGimmickBlockIgnore
+  value.number:1051
+  value.name:AbilityTypeAntiGimmickBlockBreak
+  value.number:1052
+  value.name:AbilityTypeAntiGimmickBlockHeal
+  value.number:1053
+  value.name:AbilityTypeAntiGimmickBlockBoost
+  value.number:1054
+  value.name:AbilityTypeAntiGimmickBlockAccel
+  value.number:1055
+  value.name:AbilityTypeKillerNAttributeKiller
+  value.number:2001
+  value.name:AbilityTypeKillerAllAttributeKiller
+  value.number:2002
+  value.name:AbilityTypeKillerNCategoryKiller
+  value.number:2003
+  value.name:AbilityTypeKillerNStatusKiller
+  value.number:2004
+  value.name:AbilityTypeGuardNAttributeGuard
+  value.number:2101
+  value.name:AbilityTypeGuardAllAttributeGuard
+  value.number:2102
+  value.name:AbilityTypeGuardNCategoryGuard
+  value.number:2103
+  value.name:AbilityTypeGuardNBadStatusIgnore
+  value.number:2104
+  value.name:AbilityTypeGuardBarrierFixed
+  value.number:2105
+  value.name:AbilityTypeGuardBarrierUnitHpRate
+  value.number:2106
+  value.name:AbilityTypeHealTeamHitHealFixed
+  value.number:2211
+  value.name:AbilityTypeHealTeamHitHealUnitHpRate
+  value.number:2212
+  value.name:AbilityTypeHealTeamHitHealDeckHpRate
+  value.number:2213
+  value.name:AbilityTypeHealEnemyHitHealFixed
+  value.number:2221
+  value.name:AbilityTypeHealEnemyHitHealDamageRate
+  value.number:2222
+  value.name:AbilityTypeHealRoundHealFixed
+  value.number:2231
+  value.name:AbilityTypeHealRoundHealUnitHpRate
+  value.number:2232
+  value.name:AbilityTypeHealRoundHealDeckHpRate
+  value.number:2233
+  value.name:AbilityTypeHealEnemyKillHealFixed
+  value.number:2241
+  value.name:AbilityTypeHealEnemyKillHealUnitHpRate
+  value.number:2242
+  value.name:AbilityTypeHealEnemyKillHealDeckHpRate
+  value.number:2243
+  value.name:AbilityTypeHealTurnHealFixed
+  value.number:2251
+  value.name:AbilityTypeHealTurnHealUnitHpRate
+  value.number:2252
+  value.name:AbilityTypeHealTurnHealDeckHpRate
+  value.number:2253
+  value.name:AbilityTypeCureStatusCure
+  value.number:2301
+  value.name:AbilityTypeOtherSkillTurnReduce
+  value.number:2401
+  value.name:AbilityTypeOtherSkillTurnCharge
+  value.number:2403
+  value.name:AbilityTypeOtherShotAccel
+  value.number:2405
+
+enum.name:AbilityCategory
+  value.name:AbilityCategoryNone
+  value.number:0
+

@@ -1,0 +1,71 @@
+﻿■file.message_type
+message.name:UserPurchaseData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:user_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:purchase_platform_type
+    field | to_cs_type:PurchasePlatformType
+    field.type:Enum
+    field.type_name:.monstershot.PurchasePlatformType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:shop_item_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:price
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:google_play_request
+    field | to_cs_type:ShopPurchaseGooglePlayRequest
+    field.type:Message
+    field.type_name:.monstershot.ShopPurchaseGooglePlayRequest
+    field.label:Optional
+    field | is_repeated:false
+  field.name:app_store_request
+    field | to_cs_type:ShopPurchaseAppStoreRequest
+    field.type:Message
+    field.type_name:.monstershot.ShopPurchaseAppStoreRequest
+    field.label:Optional
+    field | is_repeated:false
+  field.name:debug_request
+    field | to_cs_type:ShopPurchaseDebugRequest
+    field.type:Message
+    field.type_name:.monstershot.ShopPurchaseDebugRequest
+    field.label:Optional
+    field | is_repeated:false
+  field.name:is_receipt_inquired
+    field | to_cs_type:bool
+    field.type:Bool
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:is_resource_granted
+    field | to_cs_type:bool
+    field.type:Bool
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:purchase_at
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type

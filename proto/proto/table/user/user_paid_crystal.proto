@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "enum/common.proto";
+
+// state: OK 2020/01/02
+// ユーザー有償課金アイテム情報.
+message UserPaidCrystalData {
+    int64 id                                                          =   1;
+    int64 user_id                                                   =   2; // ユーザーID.
+    PurchasePlatformType purchase_platform_type                       =   3; // 課金プラットフォーム.
+    int64 amount                                                      =   4; // 指定プラットフォームの所持有償課金アイテム数.
+
+    reserved "primary_key:id";
+    reserved "index:user_id";
+    reserved "tag:is_client_user_data";
+}

@@ -1,0 +1,2 @@
+﻿・{ "name": "user_friend_request_data", "field": [ { "name": "id", "number": 1, "label": "label_optional", "type": "type_int64", "json_name": "id" }, { "name": "sender_user_id", "number": 2, "label": "label_optional", "type": "type_int64", "json_name": "sender_user_id" }, { "name": "target_user_id", "number": 3, "label": "label_optional", "type": "type_int64", "json_name": "target_user_id" } ], "reserved_name": [ "primary_key:id", "index:sender_user_id", "index:target_user_id" ] }s
+id	senderUserId	targetUserId	

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "data/battle_reward_resource.proto";
+
+// state: OK 2019/11/17.
+// バトル報酬のスペシャル報酬情報.
+message BattleRewardsSpecialRewardsData {
+    repeated BattleRewardResourceData battle_reward_resources         =   1; // 獲得リソースリスト.
+}

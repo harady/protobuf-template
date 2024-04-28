@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/05/02 定期的に見直す
+// トリガー種別.
+enum TriggerType {
+    TriggerTypeNone                               =   0;
+    TriggerTypeUnitPowerup                        =   1; // ユニット強化素材.
+    TriggerTypeUnitEvolution                      =   2; // ユニット進化素材.
+    TriggerTypeStaminaRecover                     =   3; // スタミナ回復.
+    TriggerTypeQuestTicket                        =   4; // クエストチケット.
+    TriggerTypeEventPoint                         =   5; // イベントポイント.
+}
+
+// state: OK 2019/05/02 定期的に見直す
+// アクション種別.
+enum ActionType {
+    ActionTypeNone                                =   0;
+    ActionTypeUnitPowerup                         =   1; // ユニット強化素材.
+    ActionTypeUnitEvolution                       =   2; // ユニット進化素材.
+    ActionTypeStaminaRecover                      =   3; // スタミナ回復.
+    ActionTypeQuestTicket                         =   4; // クエストチケット.
+    ActionTypeEventPoint                          =   5; // イベントポイント.
+}
+
+
+// state: OK 2019/05/02 定期的に見直す
+// 敵アクション情報.
+message EnemyActionData {
+    int64 id                                      =   1;
+    int64 enemy_id                                =   2; // .
+    int64 action_no                               =   3; // .
+    TriggerType trigger_type                      =   4; // .
+    int64 trigger_param_a                         =   5; // .
+    int64 trigger_param_b                         =   6; // .
+    int64 trigger_param_c                         =   7; // .
+    int64 trigger_param_d                         =   8; // .
+    ActionType action_type                        =   9; // .
+    int64 action_param_a                          =  10; // .
+    int64 action_param_b                          =  11; // .
+    int64 action_param_c                          =  12; // .
+    int64 action_param_d                          =  13; // .
+
+    reserved "primary_key:id";
+    reserved "index:enemy_id";
+    reserved "tag:is_client_master";
+}

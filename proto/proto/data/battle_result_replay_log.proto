@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/12/22.
+// サーバーに送信するリプレイログ情報.
+message BattleResultReplayLogData {
+    float time                                    =   1; // ラウンド番号.
+    int64 type                                    =   2; // ターン番号.
+    string data                                   =   3; // ヒット数.
+}

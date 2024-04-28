@@ -1,0 +1,2 @@
+﻿・{ "name": "mission_group_data", "field": [ { "name": "id", "number": 1, "label": "label_optional", "type": "type_int64", "json_name": "id" }, { "name": "type", "number": 2, "label": "label_optional", "type": "type_enum", "type_name": ".monstershot.mission_group_type", "json_name": "type" } ], "reserved_name": [ "primary_key:id", "tag:is_client_master", "index:type" ] }s
+id	type	

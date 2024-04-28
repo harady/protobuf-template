@@ -1,0 +1,58 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace AwsDotnetCsharp
+{
+{{- for message in file.message_type }}
+	public partial class {{ message.name }}
+	{
+		public async Task LoadAll(UserData user)
+		{
+			this.user = user ?? throw new APIException(message: "ユーザーが存在しません.");
+{{- for field in message.field }}
+	{{- if field | is_repeated }}
+			this.{{field.name | to_camel}} = await {{ field | to_cs_type }}.DbGetDataListByUserId(this.user.id);
+	{{- end }}
+{{- end }}
+		}
+
+		public void Merge({{ message.name }} toMerge)
+		{
+{{- for field in message.field }}
+	{{- if field | is_repeated }}
+			{{- field_name_prefix = (field.name | regex.replace "s$" "") }}
+			{{- deleted_ids_propertie_name = ("deleted" + (field_name_prefix | to_pascal) + "Ids") }}
+			this.{{field.name | to_camel}}.Merge(toMerge.{{field.name | to_camel}});
+			this.{{ deleted_ids_propertie_name }}.Merge(toMerge.{{ deleted_ids_propertie_name }});
+	{{- else }}
+			if (toMerge.{{field.name | to_camel}} != null) {
+				this.{{field.name | to_camel}} = toMerge.{{field.name | to_camel}};
+			}
+	{{- end }}
+{{- end }}
+		}
+{{- for field in message.field }}
+		{{- field_name_prefix = (field.name | regex.replace "s$" "") }}
+		{{- deleted_ids_propertie_name = ("deleted" + (field_name_prefix | to_pascal) + "Ids") }}
+		{{- if field | is_repeated  }}
+
+		[BsonElement("{{ deleted_ids_propertie_name }}")]
+		[DataMember(Name = "{{ deleted_ids_propertie_name }}")]
+		public List<long> {{ deleted_ids_propertie_name }} { get; set; } = new List<long>();
+		{{- end }}
+{{- end }}
+{{- for field in message.field }}
+		{{- field_name_prefix = (field.name | regex.replace "s$" "") }}
+		{{- if field | is_repeated  }}
+
+		public TableUpdateData<{{ field | to_cs_type }}> {{ field_name_prefix | to_camel }}TableUpdate
+			=> new TableUpdateData<{{ field | to_cs_type }}>({{ field_name_prefix | to_camel }}s, deleted{{ field_name_prefix | to_pascal }}Ids);
+		{{- end }}
+{{- end }}
+	}
+{{ end -}}
+}

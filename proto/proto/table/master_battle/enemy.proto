@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/11/17 定期的に見直す
+// 敵情報.
+message EnemyData {
+    int64 id                                      =   1;
+    string name                                   =   2; // 名前
+    int64 unit_id                                 =   3; // ユニットId.
+    int64 hp                                      =   4; // HP.
+    int64 size                                    =   5; // サイズ.
+    int64 weak_point_id                           =   6; // 弱点.
+    bool is_boss                                  =   7; // ボスか否か.
+    bool is_escape                                =   8; // is_escape以外の敵をすべて倒したら撤退する.
+    int64 damage_rate                             =   9; // ダメージ倍率(全攻撃にかかるダメージ倍率).
+    int64 direct_damage_rate                      =  10; // 直殴り倍率(直殴りにかかるダメージ倍率).
+    int64 indirect_damage_rate                    =  11; // 間接攻撃倍率(間接攻撃ダメージ透過率).
+    int64 base_enemy_id                           =  12; // ベースとなる敵ID.
+    int64 drop_rate                               =  13; // 報酬ドロップ率(千分率).
+    int64 reward_resource_lottery_id              =  14; // ドロップ報酬のリソース抽選の[resource_lottery.id].
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/06/02
+// アセットバンドル情報.
+message AssetbundleData {
+    string name                                   =   1; // アセットバンドル名.
+    string hash                                   =   2; // ハッシュ.
+    int64 size                                    =   3; // ファイルサイズ(byte).
+}

@@ -1,0 +1,65 @@
+﻿■file.message_type
+message.name:GachaPoolData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:name
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:gacha_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:base_gacha_pool_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:is_extra
+    field | to_cs_type:bool
+    field.type:Bool
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:is_pickup
+    field | to_cs_type:bool
+    field.type:Bool
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:is_guarantee
+    field | to_cs_type:bool
+    field.type:Bool
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:rarity
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:attribute
+    field | to_cs_type:UnitAttribute
+    field.type:Enum
+    field.type_name:.monstershot.UnitAttribute
+    field.label:Optional
+    field | is_repeated:false
+  field.name:weight
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type

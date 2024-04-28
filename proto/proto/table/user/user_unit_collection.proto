@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2018/12/23
+// ユニットの図鑑情報
+message UserUnitCollectionData {
+    int64 id                                       =   1;
+    int64 user_id                                =   2; // ユーザーID
+    int64 unit_id                                  =   3; // ユニットID.
+    bool has_earned                                =   4; // 獲得済み.
+    int64 used_count                               =   5; // 使用回数.
+
+    reserved "primary_key:id";
+    reserved "index:user_id";
+    reserved "unique_index:unit_id";
+    reserved "tag:is_client_user_data";
+}

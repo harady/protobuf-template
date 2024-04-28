@@ -1,0 +1,63 @@
+﻿//GENERATED CODE, DO NOT EDIT !
+using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+
+{{ for service in file.service }}
+{{- serviceName = (service.name + "Service") }}
+public partial class {{ serviceName }} : AbstractApiService
+{
+	#region Singleton
+	public static {{ serviceName }} instance {
+		get { return SingletonContainer.GetInstance<{{ serviceName }}>(); }
+	}
+	#endregion
+{{ for method in service.method }}
+	private void {{ method.name }}Inner(
+		{{ method.input_type | to_short_name }} request,
+		Action<{{ method.output_type | to_short_name }}> onSuccess,
+		Action<ErrorResponse> onFailure = null)
+	{
+		const string Path = "api/{{ service.name | to_snake }}/{{ method.name | to_snake }}";
+		request.SetupCommon();
+		var apiRequest = new APIRequest(Path, request);
+		// リクエストを送信.
+		GetApiSender().SendRequest<{{ method.output_type | to_short_name }}>(
+			apiRequest: apiRequest,
+			onSuccess: (apiResponse) => {
+				var response = ({{ method.output_type | to_short_name }})apiResponse;
+				onSuccess?.Invoke(response);
+			},
+			onFailure: onFailure
+		);
+	}
+{{ end -}}
+}
+
+public partial class Services {
+	public static {{ serviceName }} {{ serviceName }}
+		=> {{ serviceName }}.instance;
+}
+{{ end -}}
+
+#region Request/Response
+{{- for message in file.message_type }}
+{{- if (message.name | string.ends_with "Response") }}
+public partial class {{ message.name }} : APIResponse
+{
+{{- else }}
+public partial class {{ message.name }} : CommonRequest
+{
+{{- end }}
+{{- for field in message.field }}
+	[JsonProperty("{{ field.name }}")]
+{{- if !(field | is_repeated) }}
+	public {{ field | to_cs_type }} {{ field.name | to_camel }} { get; set; }
+{{- else }}
+	public List<{{ field | to_cs_type }}> {{ field.name | to_camel }} { get; set; } 
+		= new List<{{ field | to_cs_type }}>();
+{{- end }}
+{{- end }}
+}
+{{ end -}}
+#endregion

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "data/resource.proto";
+
+
+// state: OK 2019/05/19 定期的に見直す.
+// ある程度table/master_battleに追従.
+// バトル初期情報の敵情報.
+message BattleInitEnemyData {
+    int64 id                                                =   1;
+    int64 round_id                                          =   2;
+    int64 enemy_id                                          =   3; // 敵ID.
+    int64 pos_x                                             =   4; // 初期配置位置x.
+    int64 pos_y                                             =   5; // 初期配置位置y.
+    ResourceData drop_reward_resource                       =   6; // ドロップ報酬.
+
+    reserved "primary_key:id";
+    reserved "index:round_id";
+}

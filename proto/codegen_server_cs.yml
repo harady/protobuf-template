@@ -1,0 +1,95 @@
+protoc_path : "bin/protoc"
+protoc_plugin_path : "bin/plugin/protoc-gen-csharp-template"
+src_base_path : "./proto/"
+template_base_path : "template/"
+out_base_path : "output/server/"
+file_name_case : "Pascal"
+items:
+  #============================================================
+  # Server Model(Table)のC#ファイル生成.
+  #============================================================
+  - name: "server_generate_model_table_cs"
+    message: "== Server Model(Table)のC#ファイル生成中."
+    src_path_pattern: "table/**/*.proto"
+    items:
+      # Server XxxxData.cs 生成
+      - message: "==== Server XxxxData.cs 生成中"
+        template_path: "csharp_server_model-partial.sbncs"
+        file_suffix: "Data.cs"
+        out_dir_path: "Model"
+        is_editable: true
+      # Server XxxxData_GeneratedCrud.cs 生成
+      - message: "==== Server XxxxData_GeneratedCrud.cs 生成中"
+        template_path: "csharp_server_model-crud.sbncs"
+        file_suffix: "Data_GeneratedCrud.cs"
+        out_dir_path: "Model/Generated"
+      # Server XxxxData_GeneratedData.cs 生成
+      - message: "==== Server XxxxData_GeneratedData.cs 生成中"
+        template_path: "csharp_server_model-data.sbncs"
+        file_suffix: "Data_GeneratedData.cs"
+        out_dir_path: "Model/Generated"
+  #============================================================
+  # Server Model(Data)のC#ファイル生成.
+  #============================================================
+  - name: "server_generate_model_data_cs"
+    message: "== Server Model(Data)のC#ファイル生成中."
+    src_path_pattern: "data/**/*.proto"
+    items:
+      # Server XxxxData.cs 生成
+      - message: "==== Server XxxxData.cs 生成中"
+        template_path: "csharp_server_model-partial.sbncs"
+        file_suffix: "Data.cs"
+        out_dir_path: "Data"
+        is_editable: true
+      # Server XxxxData_GeneratedData.cs 生成
+      - message: "==== Server XxxxData_GeneratedData.cs 生成中"
+        template_path: "csharp_server_model-data.sbncs"
+        file_suffix: "Data_GeneratedData.cs"
+        out_dir_path: "Data/Generated"
+      # Server XxxxData_GeneratedMaster.cs 生成
+      - message: "==== Server XxxxData_GeneratedMaster.cs 生成中"
+        src_path_pattern: "data/**/{master,client_master}.proto"
+        template_path: "csharp_server_model-master.sbncs"
+        file_suffix: "Data_GeneratedMaster.cs"
+        out_dir_path: "Data/Generated"
+      # Server XxxxData_GeneratedUserUpdate.cs 生成
+      - message: "==== Server XxxxData_GeneratedUserUpdate.cs 生成中"
+        src_path_pattern: "data/**/user_update.proto"
+        template_path: "csharp_server_model-user_update.sbncs"
+        file_suffix: "Data_GeneratedUserUpdate.cs"
+        out_dir_path: "Data/Generated"
+  #============================================================
+  # Server ServiceのC#ファイルを生成.
+  #============================================================
+  - name: "server_generate_service_cs"
+    message: "== Server ServiceのC#ファイルを生成中."
+    src_path_pattern: "service/**/*.proto"
+    items:
+      # Server XxxxService.cs 生成
+      - message: "==== Server XxxxService.cs 生成中"
+        template_path: "csharp_server_service-partial.sbncs"
+        file_suffix: "Service.cs"
+        out_dir_path: "Service"
+        is_editable: true
+      # Server XxxxService_Generated.cs 生成
+      - message: "==== Server XxxxService_Generated.cs 生成中"
+        template_path: "csharp_server_service.sbncs"
+        file_suffix: "Service_Generated.cs"
+        out_dir_path: "Service/Generated"
+      # Server XxxxServiceData.cs 生成
+      - message: "==== Server XxxxServiceData.cs 生成中"
+        template_path: "csharp_server_model-partial.sbncs"
+        file_suffix: "ServiceData.cs"
+        out_dir_path: "Service"
+  #============================================================
+  # Server EnumのC#ファイル生成.
+  #============================================================
+  - name: "server_generate_enum_cs"
+    message: "== Server EnumのC#ファイル生成中."
+    src_path_pattern: "{data,table,enum}/**/*.proto"
+    items:
+      # Server data/table/enum XxxxEnum.cs 生成
+      - message: "==== Server data/table/enum XxxxEnum.cs 生成中"
+        template_path: "csharp_enum.sbncs"
+        file_suffix: "Enum.cs"
+        out_dir_path: "Enum/Generated"

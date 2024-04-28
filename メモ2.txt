@@ -1,0 +1,3 @@
+
+protocのマニュアル
+https://developers.google.com/protocol-buffers/docs/reference/csharp-generated

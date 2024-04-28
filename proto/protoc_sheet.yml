@@ -1,0 +1,19 @@
+protoc_path : "bin/protoc"
+protoc_plugin_path : "bin/plugin/protoc-gen-csharp-template"
+src_base_path : "./proto/"
+template_base_path : "template/"
+out_base_path : "./output/"
+items:
+  #============================================================
+  # スプレッドシートカラムを生成.
+  #============================================================
+  - name: "sheet_columns"
+    message: "== スプレッドシートカラム 生成中."
+    src_path_pattern: "./table/**/*.proto"
+    items:
+      # Model(Table)のスプレッドシートカラム 生成
+      - message: "==== Model(Table)のスプレッドシートカラム 生成中"
+        template_path: "sheet_columns.sbncs"
+        file_suffix: ".txt"
+        out_dir_path: "sheet_columns"
+        is_editable: false

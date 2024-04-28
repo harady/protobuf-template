@@ -1,0 +1,104 @@
+フォルダー パスの一覧:  ボリューム OS
+ボリューム シリアル番号は EB42-9D20 です
+C:.
+│  list.bat
+│  ReadMe.txt
+│  tree.txt
+│  
+├─battle
+│      battle_init_enemy.proto
+│      
+├─master_battle
+│      enemy.proto
+│      enemy_action.proto
+│      enemy_cluster.proto
+│      enemy_mapping.proto
+│      round.proto
+│      weak_point.proto
+│      weak_point_position.proto
+│      
+├─master_common
+│      canpaign.proto
+│      config.proto
+│      identifable_item.proto
+│      item.proto
+│      resource_lottery.proto
+│      resource_lottery_item.proto
+│      resource_set.proto
+│      resource_set_item.proto
+│      
+├─master_event
+│      daily_event_table.proto
+│      daily_event_table_item.proto
+│      event_quest_category.proto
+│      event_schedule_term.proto
+│      
+├─master_gacha
+│      gacha.proto
+│      gacha_button.proto
+│      gacha_pool.proto
+│      gacha_pool_item.proto
+│      gacha_schedule.proto
+│      
+├─master_message
+│      message.proto
+│      
+├─master_mission
+│      mission.proto
+│      mission_group.proto
+│      mission_schedule.proto
+│      
+├─master_other
+│      advice.proto
+│      log.proto
+│      login_bonus.proto
+│      login_bonus_item.proto
+│      player_rank_exp.proto
+│      version.proto
+│      
+├─master_quest
+│      event_schedule.proto
+│      quest.proto
+│      quest_group.proto
+│      stage.proto
+│      stage_special_reward.proto
+│      
+├─master_shop
+│      exchange.proto
+│      exchange_item.proto
+│      exchange_schedule.proto
+│      shop.proto
+│      shop_item.proto
+│      shop_schedule.proto
+│      
+├─master_unit
+│      ability.proto
+│      combo.proto
+│      equipment.proto
+│      skill.proto
+│      unit.proto
+│      unit_category.proto
+│      unit_evolution.proto
+│      unit_level_exp.proto
+│      
+└─player
+        player.proto
+        player_backup.proto
+        player_battle.proto
+        player_deck.proto
+        player_exchange_item.proto
+        player_friend.proto
+        player_friend_request.proto
+        player_gacha_button.proto
+        player_identifable_item.proto
+        player_item.proto
+        player_message.proto
+        player_mission.proto
+        player_paid_crystal.proto
+        player_purchase.proto
+        player_session.proto
+        player_shop_item.proto
+        player_stage.proto
+        player_unit.proto
+        player_unit_collection.proto
+        

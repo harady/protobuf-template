@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+
+// ミッション.
+service Mission {
+    // ミッション/達成.
+    rpc Achieve (MissionAchieveRequest) returns (MissionAchieveResponse);
+    // ミッション/報酬受取.
+    rpc Receive (MissionReceiveRequest) returns (MissionReceiveResponse);
+}
+
+
+//====================================================================
+// state: OK 2019/01/01
+// ミッション/達成 リクエスト.
+message MissionAchieveRequest {
+    int64 mission_id                              =   1; // 達成したミッションのmission.id.
+}
+
+// state: OK 2019/01/01
+// ミッション/達成 レスポンス.
+message MissionAchieveResponse {
+}
+
+
+//====================================================================
+// state: OK 2019/01/01
+// ミッション/報酬受取 リクエスト.
+message MissionReceiveRequest {
+    repeated int64 mission_ids                    =   1; // 報酬を受け取るミッションのmission.idのリスト.
+}
+
+// state: OK 2019/01/01
+// ミッション/報酬受取 レスポンス.
+message MissionReceiveResponse {
+}

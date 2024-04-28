@@ -1,0 +1,55 @@
+﻿using System;
+
+public partial class ClientMasterData
+{
+	public void SetToGameDb()
+	{
+		EnemyData.SetDataList(enemys);
+		EnemyActionData.SetDataList(enemyActions);
+		RoundData.SetDataList(rounds);
+		WeakPointData.SetDataList(weakPoints);
+		WeakPointPositionData.SetDataList(weakPointPositions);
+		CanpaignData.SetDataList(canpaigns);
+		ConfigData.SetDataList(configs);
+		IdentifableItemData.SetDataList(identifableItems);
+		ItemData.SetDataList(items);
+		ResourceLotteryData.SetDataList(resourceLotterys);
+		ResourceLotteryItemData.SetDataList(resourceLotteryItems);
+		ResourceSetData.SetDataList(resourceSets);
+		ResourceSetItemData.SetDataList(resourceSetItems);
+		DailyEventTableData.SetDataList(dailyEventTables);
+		DailyEventTableItemData.SetDataList(dailyEventTableItems);
+		GachaData.SetDataList(gachas);
+		GachaButtonData.SetDataList(gachaButtons);
+		GachaScheduleData.SetDataList(gachaSchedules);
+		MessageData.SetDataList(messages);
+		MissionData.SetDataList(missions);
+		MissionGroupData.SetDataList(missionGroups);
+		MissionScheduleData.SetDataList(missionSchedules);
+		AdviceData.SetDataList(advices);
+		LogData.SetDataList(logs);
+		LoginBonusData.SetDataList(loginBonuss);
+		LoginBonusItemData.SetDataList(loginBonusItems);
+		UserRankExpData.SetDataList(userRankExps);
+		VersionData.SetDataList(versions);
+		EventScheduleData.SetDataList(eventSchedules);
+		QuestData.SetDataList(quests);
+		QuestGroupData.SetDataList(questGroups);
+		StageData.SetDataList(stages);
+		StageSpecialRewardData.SetDataList(stageSpecialRewards);
+		ExchangeData.SetDataList(exchanges);
+		ExchangeItemData.SetDataList(exchangeItems);
+		ExchangeScheduleData.SetDataList(exchangeSchedules);
+		ShopData.SetDataList(shops);
+		ShopItemData.SetDataList(shopItems);
+		ShopScheduleData.SetDataList(shopSchedules);
+		AbilityData.SetDataList(abilitys);
+		ComboData.SetDataList(combos);
+		EquipmentData.SetDataList(equipments);
+		SkillData.SetDataList(skills);
+		UnitData.SetDataList(units);
+		UnitCategoryData.SetDataList(unitCategorys);
+		UnitEvolutionData.SetDataList(unitEvolutions);
+		UnitLevelExpData.SetDataList(unitLevelExps);
+	}
+}

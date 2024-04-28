@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/12/22 TODO 定期的に見直す.
+// サーバーに送信する1ターン分のログ情報
+message BattleResultTurnLogData {
+    int64 turn_no                                 =   1; // ターン番号.
+    int64 round_no                                =   2; // ラウンド番号.
+    int64 hit_count                               =   3; // ヒット数.
+    int64 total_damage                            =   4; // 合計ダメージ.
+    repeated int64 killed_enemy_mapping_ids       =   5; // 倒した敵の[enemy_mapping.id]リスト.
+    float total_waiting_time                      =   6; // ターン開始からショット終了までの時間.
+    float turn_end_time                           =   7; // ターン終了時間(ゲーム起動中の実時間).
+    float turn_end_realtime                       =   8; // ターン終了時間(実時間,サスペンド状態で経過した時間を含む).
+    bool is_shot                                  =   9; // ショットしたか否か.
+    bool is_use_skill                             =  10; // スキル発動したか否か.
+    float shot_angle                              =  11; // ショット角度.
+    string hash                                   =  12; // バトル状態のハッシュ.
+}

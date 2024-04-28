@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// アビリティ種別.
+enum AbilityType {
+    AbilityTypeNone                                                             =    0; // .
+    AbilityTypeAntiGimmickGravityFieldGuard                                     = 1011; // 重力フィールド耐性.
+    AbilityTypeAntiGimmickGravityFieldBreak                                     = 1012; // 重力フィールド破壊.
+    AbilityTypeAntiGimmickGravityFieldHeal                                      = 1013; // 重力フィールド回復.
+    AbilityTypeAntiGimmickGravityFieldBoost                                     = 1014; // 重力フィールド加撃.
+    AbilityTypeAntiGimmickGravityFieldAccel                                     = 1015; // 重力フィールド加速.
+    AbilityTypeAntiGimmickDamageBarrierGuard                                    = 1021; // ダメージバリア耐性.
+    AbilityTypeAntiGimmickDamageBarrierBreak                                    = 1022; // ダメージバリア破壊.
+    AbilityTypeAntiGimmickDamageBarrierHeal                                     = 1023; // ダメージバリア回復.
+    AbilityTypeAntiGimmickDamageBarrierBoost                                    = 1024; // ダメージバリア加撃.
+    AbilityTypeAntiGimmickDamageBarrierAccel                                    = 1025; // ダメージバリア加速.
+    AbilityTypeAntiGimmickWarpHoleIgnore                                        = 1031; // ワープホール無効.
+    AbilityTypeAntiGimmickWarpHoleBreak                                         = 1032; // ワープホール破壊.
+    AbilityTypeAntiGimmickWarpHoleHeal                                          = 1033; // ワープホール回復.
+    AbilityTypeAntiGimmickWarpHoleBoost                                         = 1034; // ワープホール加撃.
+    AbilityTypeAntiGimmickWarpHoleAccel                                         = 1035; // ワープホール加速.
+    AbilityTypeAntiGimmickMineBombGuard                                         = 1041; // マインボム耐性.
+    AbilityTypeAntiGimmickMineBombBreak                                         = 1042; // マインボム無効.
+    AbilityTypeAntiGimmickMineBombHeal                                          = 1043; // マインボム回復.
+    AbilityTypeAntiGimmickMineBombBoost                                         = 1044; // マインボム加撃.
+    AbilityTypeAntiGimmickMineBombAccel                                         = 1045; // マインボム加速.
+    AbilityTypeAntiGimmickBlockIgnore                                           = 1051; // ブロック無効.
+    AbilityTypeAntiGimmickBlockBreak                                            = 1052; // ブロック破壊.
+    AbilityTypeAntiGimmickBlockHeal                                             = 1053; // ブロック回復.
+    AbilityTypeAntiGimmickBlockBoost                                            = 1054; // ブロック加撃.
+    AbilityTypeAntiGimmickBlockAccel                                            = 1055; // ブロック加速.
+    AbilityTypeKillerNAttributeKiller                                           = 2001; // 属性キラー.
+    AbilityTypeKillerAllAttributeKiller                                         = 2002; // 全属性キラー.
+    AbilityTypeKillerNCategoryKiller                                            = 2003; // 種族キラー.
+    AbilityTypeKillerNStatusKiller                                              = 2004; // 状態キラー.
+    AbilityTypeGuardNAttributeGuard                                             = 2101; // 属性耐性.
+    AbilityTypeGuardAllAttributeGuard                                           = 2102; // 全属性耐性.
+    AbilityTypeGuardNCategoryGuard                                              = 2103; // 種族耐性.
+    AbilityTypeGuardNBadStatusIgnore                                            = 2104; // 状態異常無効.
+    AbilityTypeGuardBarrierFixed                                                = 2105; // バリア(固定値).
+    AbilityTypeGuardBarrierUnitHpRate                                           = 2106; // バリア(ユニットHP割合).
+    AbilityTypeHealTeamHitHealFixed                                             = 2211; // 回復(固定値).
+    AbilityTypeHealTeamHitHealUnitHpRate                                        = 2212; // 回復(ユニットHP割合).
+    AbilityTypeHealTeamHitHealDeckHpRate                                        = 2213; // 回復(デッキHP割合).
+    AbilityTypeHealEnemyHitHealFixed                                            = 2221; // ドレイン(固定値).
+    AbilityTypeHealEnemyHitHealDamageRate                                       = 2222; // ドレイン(ダメージ割合).
+    AbilityTypeHealRoundHealFixed                                               = 2231; // ラウンド開始時回復(固定値).
+    AbilityTypeHealRoundHealUnitHpRate                                          = 2232; // ラウンド開始時回復(ユニットHP割合).
+    AbilityTypeHealRoundHealDeckHpRate                                          = 2233; // ラウンド開始時回復(デッキHP割合).
+    AbilityTypeHealEnemyKillHealFixed                                           = 2241; // ソウルスティール(固定値).
+    AbilityTypeHealEnemyKillHealUnitHpRate                                      = 2242; // ソウルスティール(ユニットHP割合).
+    AbilityTypeHealEnemyKillHealDeckHpRate                                      = 2243; // ソウルスティール(デッキHP割合).
+    AbilityTypeHealTurnHealFixed                                                = 2251; // 毎ターン回復(固定値).
+    AbilityTypeHealTurnHealUnitHpRate                                           = 2252; // 毎ターン回復(ユニットHP割合).
+    AbilityTypeHealTurnHealDeckHpRate                                           = 2253; // 毎ターン回復(デッキHP割合).
+    AbilityTypeCureStatusCure                                                   = 2301; // 状態異常回復.
+    AbilityTypeOtherSkillTurnReduce                                             = 2401; // SSターン短縮.
+    AbilityTypeOtherSkillTurnCharge                                             = 2403; // SSターンチャージ.
+    AbilityTypeOtherShotAccel                                                   = 2405; // ダッシュ.
+}
+
+// アビリティカテゴリ.
+enum AbilityCategory {
+    AbilityCategoryNone                 =   0; // .
+}
+
+// state: OK 2019/05/05
+// アビリティ情報.
+message AbilityData {
+    int64 id                             =   1; // ID.
+    string name                          =   2; // 名前.
+    AbilityCategory category             =   3; // アビリティカテゴリ.
+    AbilityType type                     =   4; // アビリティ種別.
+    string description                   =   5; // 説明.
+    int64 target                         =   6; // 対象.
+    int64 param_a                        =   7; // パラメータA.
+    int64 param_b                        =   8; // パラメータB.
+    int64 param_c                        =   9; // パラメータC.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+}

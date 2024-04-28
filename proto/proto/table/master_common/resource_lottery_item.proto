@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+import "enum/common.proto";
+
+// state: OK 2019/11/17
+// ResourceLotteryに含まれる要素情報.
+message ResourceLotteryItemData {
+    int64 id                                      =   1;
+    int64 resource_lottery_id                     =   2; // このResourceSetItemが含まれるresource_setのid
+    int64 weight                                  =   3; // 抽選の重み.
+    ResourceType resource_type                    =   4; // ResourceType
+    int64 resource_id                             =   5; // ResourceId
+    int64 resource_amount_min                     =   6; // ResourceAmountMin
+    int64 resource_amount_max                     =   7; // ResourceAmountMax
+
+    reserved "tag:is_client_master";
+    reserved "primary_key:id";
+    reserved "index:resource_lottery_id";
+}

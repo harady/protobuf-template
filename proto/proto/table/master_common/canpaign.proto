@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: TODO
+message CanpaignData {
+    int64 id                             =   1;
+    string name                           =   2;
+
+    reserved "tag:is_client_master";
+    reserved "primary_key:id";
+}

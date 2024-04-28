@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/2/23
+// イベントスケジュール期間情報.
+// ※イベントスケジュール生成元.
+message EventScheduleTermData {
+    int64 id                                      =   1;
+    int64 daily_event_table_id                    =   2; // イベントデイリーテーブルID.
+    int64 open_at                                 =   3; // 開始日時.
+    int64 close_at                                =   4; // 終了日時.
+
+    reserved "primary_key:id";
+    reserved "tag:is_master";
+}

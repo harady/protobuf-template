@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// 進化種別
+enum UnitEvolutionType {
+    UnitEvolutionTypeNone               =   0; // 
+    UnitEvolutionTypeShinka             =   1; // 進化.
+    UnitEvolutionTypeKamika             =   2; // 神化.
+    UnitEvolutionTypeJushinka           =   3; // 獣神化.
+}
+
+// state: OK 2018/12/23
+// ユニット進化情報.
+message UnitEvolutionData {
+    int64 id                                      =   1; // ID.
+    string name                                   =   2; // 名前.
+    UnitEvolutionType type                        =   3; // 進化種別.
+    int64 base_unit_id                            =   4; // 進化元ユニットのユニットID.
+    int64 result_unit_id                          =   5; // 進化後ユニットのユニットID.
+    int64 cost_resource_set_id                    =   6; // 必要素材のリソースセットID.
+
+    reserved "primary_key:id";
+    reserved "index:base_unit_id";
+    reserved "tag:is_client_master";
+}

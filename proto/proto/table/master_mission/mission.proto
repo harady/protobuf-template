@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+import "enum/common.proto";
+
+// state: TODO 番号を体系的に整理する.
+// ミッション種別.
+enum MissionType {
+    MissionTypeNone                               =   0;
+    MissionTypeTotalLoginCount                    =   1; // 通算ログイン [param_a:-][param_b:-].
+    MissionTypeTotalLuckMaxUnitCount              =   2; // 通算運極数 [param_a:-][param_b:-].
+    MissionTypeTotalFirstMultiPlayCount           =   3; // 初顔合わせ人数 [param_a:-][param_b:-].
+    MissionTypeTotalClearCount                    =   4; // 通算クリア回数 [param_a:-][param_b:-].
+    MissionTypeTotalUnitCollectionCount           =   5; // 通算獲得モンスター種数 [param_a:-][param_b:-].
+    MissionTypeTotalPlayCount                     =   6; // 通算プレイ回数 [param_a:-][param_b:-].
+    MissionTypeTargetQuestClear                   =   7; // 指定クエストクリア [param_a:quest.id][param_b:-].
+    MissionTypeTargetStageClearSRank              =   8; // 指定ステージSランククリア [param_a:stage.id][param_b:-].
+}
+
+// state: TODO
+// ミッション情報.
+message MissionData {
+    int64 id                                      =   1;
+    string name                                   =   2; // ミッション名.
+    int64 mission_group_id                        =   3; // このミッションが所属するミッショングループのmission_group.id.
+    MissionType type                              =   4; // ミッション種別.
+    int64 to_achieve_progress                     =   5; // 達成に必要な進捗.
+    int64 param_a                                 =   6; // パラメータA.
+    int64 param_b                                 =   7; // パラメータB.
+    ResourceType reward_resource_type             =   8; // 報酬のリソース種別.
+    int64 reward_resource_id                      =   9; // 報酬のリソースID.
+    int64 reward_resource_amount                  =  10; // 報酬のリソース個数.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+    reserved "index:type";
+}

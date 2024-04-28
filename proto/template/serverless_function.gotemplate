@@ -1,0 +1,11 @@
+﻿{{- range .Services -}}
+{{- $service_name := .Name -}}
+{{ range .Methods -}}
+{{ "" }}{{ $service_name | ToSnakeCase }}__{{ .Name | ToSnakeCase }}:
+  handler: CsharpHandlers::AwsDotnetCsharp.{{ $service_name }}Service::{{ .Name }}
+  events:
+    - http:
+        path: {{ $service_name | ToSnakeCase }}/{{ .Name | ToSnakeCase }}
+        method: post
+{{ end -}}
+{{ end -}}

@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "table/user/user_deck.proto";
+import "data/resource.proto";
+
+service Unit {
+    // ユニット/デッキ編集.
+    rpc DeckEdit (UnitDeckEditRequest) returns (UnitDeckEditResponse);
+    // ユニット/強化.
+    rpc Powerup (UnitPowerupRequest) returns (UnitPowerupResponse);
+    // ユニット/進化.
+    rpc Evolution (UnitEvolutionRequest) returns (UnitEvolutionResponse);
+    // ユニット/売却.
+    rpc Sell (UnitSellRequest) returns (UnitSellResponse);
+    // ユニット/ロック.
+    rpc Lock (UnitLockRequest) returns (UnitLockResponse);
+}
+
+
+//====================================================================
+// state: OK 2018/12/23
+// ユニット/デッキ編集 リクエスト.
+message UnitDeckEditRequest {
+    UserDeckData user_deck                         =   1; // 更新するデッキ.
+}
+
+// state: OK 2018/12/23
+// ユニット/デッキ編集 レスポンス.
+message UnitDeckEditResponse {
+}
+
+
+//====================================================================
+// state: OK 2019/01/01
+// ユニット/強化 リクエスト.
+message UnitPowerupRequest {
+    int64 user_unit_id                                    =   1; // 
+    repeated ResourceData consume_resources            =   2; // 消費するリソースリスト.
+}
+
+// state: OK 2019/01/01
+// ユニット/強化 レスポンス.
+message UnitPowerupResponse {
+}
+
+
+//====================================================================
+// state: OK 2019/04/13
+// ユニット/進化 リクエスト.
+message UnitEvolutionRequest {
+    int64 user_unit_id                                    =   1; // 
+    int64 unit_evolution_id                                 =   2; // 
+    repeated ResourceData consume_resources            =   3; // 消費するリソースリスト.
+}
+
+// state: OK 2019/04/13
+// ユニット/進化 レスポンス.
+message UnitEvolutionResponse {
+}
+
+
+//====================================================================
+// state: OK 2018/12/23
+// ユニット/売却 リクエスト.
+message UnitSellRequest {
+    repeated int64 user_unit_ids                          =   1; // 
+}
+
+// state: OK 2018/12/23
+// ユニット/売却 レスポンス.
+message UnitSellResponse {
+}
+
+
+//====================================================================
+// state: OK 2018/12/23
+// ユニット/ロック リクエスト.
+message UnitLockRequest {
+    int64 user_unit_id                                    =   1; // 保護切り替え対象ユーザーユニットのID.
+    bool is_locked                                          =   2; // 設定するロック状態.
+}
+
+// state: OK 2018/12/23
+// ユニット/保護 レスポンス.
+message UnitLockResponse {
+}

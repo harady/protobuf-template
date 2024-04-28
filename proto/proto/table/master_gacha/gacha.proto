@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/04/21
+// ガチャ情報.
+message GachaData {
+    int64 id                                      =   1;
+    string name                                   =   2; // ガチャ名.
+    int64 base_gacha_id                           =   3; // このガチャのベースとなるガチャのgacha.id(0以外を指定すると指定したgacha.idのgacha_poolが追加される).
+    bool is_premium                               =   4; // プレミアムガチャか否か.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+}
+

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "table/user/user_unit.proto";
+
+// state: OK 2019/05/24.
+// バトル初期状態のデッキ情報.
+message BattleInitDeckData {
+    repeated UserUnitData user_units                                =   1; // デッキ内のユニット情報.
+}

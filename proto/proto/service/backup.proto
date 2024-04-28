@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "table/user/user_backup.proto";
+
+service Backup {
+    // バックアップ/トークン保存.
+    rpc SaveToken (BackupSaveTokenRequest) returns (BackupSaveTokenResponse);
+    // バックアップ/トークンクリア.
+    rpc RemoveToken (BackupRemoveTokenRequest) returns (BackupRemoveTokenResponse);
+    // バックアップ/引き継ぎ実行.
+    rpc Transfer (BackupTransferRequest) returns (BackupTransferResponse);
+}
+
+
+//====================================================================
+// state: OK 2019/07/15
+// バックアップ/トークン保存 リクエスト.
+message BackupSaveTokenRequest {
+    BackupType backup_type                             =   1; // バックアップ種別.
+    string backup_token                                     =   2; // バックアップトークン.
+}
+
+// state: OK 2019/07/15
+// バックアップ/トークン保存 レスポンス.
+message BackupSaveTokenResponse {
+}
+
+
+//====================================================================
+// state: OK 2019/07/15
+// バックアップ/トークンクリア リクエスト.
+message BackupRemoveTokenRequest {
+    BackupType backup_type                             =   1; // バックアップ種別.
+}
+
+// state: OK 2019/07/15
+// バックアップ/トークンクリア レスポンス.
+message BackupRemoveTokenResponse {
+}
+
+
+//====================================================================
+// state: OK 2019/07/15
+// バックアップ/引き継ぎ実行 リクエスト.
+message BackupTransferRequest {
+    BackupType backup_type                             =   1; // バックアップ種別.
+    string backup_token                                     =   2; // バックアップトークン.
+}
+
+// state: OK 2019/07/15
+// バックアップ/引き継ぎ実行 レスポンス.
+message BackupTransferResponse {
+    string token                                            =   1; // トークン.
+    string session_id                                       =   2; // セッション.
+}

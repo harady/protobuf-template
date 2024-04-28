@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// state: TODO
+// エラーレスポンス.
+message ErrorResponse {
+    int32 code                                              =   1; // エラーコード
+    string title                                            =   2; // タイトル.
+    string message                                          =   3; // メッセージ.
+    string description                                      =   4; // 説明.
+}

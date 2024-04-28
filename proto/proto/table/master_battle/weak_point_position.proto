@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/05/02.
+// 敵弱点位置情報.
+message WeakPointPositionData {
+    int64 id                                      =   1;
+    int64 weak_point_id                           =   2; // 所属する敵弱点情報.
+    int64 angle                                   =   3; // 時計回りの弱点位置の角度(0～360) 0:上 80:右 180:下 270:左 360:上
+    int64 radius_rate                             =   4; // 敵サイズに対する半径(0～1000) 0:中心 1000:敵サイズの円周上.
+    int64 size_rate                               =   5; // 敵サイズに対する弱点サイズ 1000:敵サイズと同じサイズ.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+    reserved "index:weak_point_id";
+}

@@ -1,0 +1,33 @@
+﻿■file.message_type
+message.name:ExchangeData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:name
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:type
+    field | to_cs_type:ExchangeType
+    field.type:Enum
+    field.type_name:.monstershot.ExchangeType
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type
+enum.name:ExchangeType
+  value.name:ExchangeTypeNone
+  value.number:0
+  value.name:ExchangeTypeShop
+  value.number:1
+  value.name:ExchangeTypeHidden
+  value.number:2
+  value.name:ExchangeTypeDebug
+  value.number:99
+

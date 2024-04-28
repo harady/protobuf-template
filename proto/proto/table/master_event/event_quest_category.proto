@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "enum/common.proto";
+
+// state: OK 2019/2/24
+// イベントクエストカテゴリ情報.
+// ※イベントスケジュール生成元.
+message EventQuestCategoryData {
+    int64 id                                                =   1;
+    string name                                             =   2; // 名前.
+    int64 min_start_time                                    =   3; // 最小開始時刻.
+    int64 max_start_time                                    =   4; // 最大開始時刻.
+    int64 open_hours                                        =   5; // 1降臨の開催時間.
+    int64 quest_group_id                                    =   6; // クエストグループ.
+    QuestDifficultyType questDifficultyType                 =   7; // クエスト難度.
+
+    reserved "primary_key:id";
+    reserved "tag:is_master";
+}

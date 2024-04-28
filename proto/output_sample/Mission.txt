@@ -1,0 +1,85 @@
+﻿■file.message_type
+message.name:MissionData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:name
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:mission_group_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:type
+    field | to_cs_type:MissionType
+    field.type:Enum
+    field.type_name:.monstershot.MissionType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:to_achieve_progress
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:param_a
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:param_b
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:reward_resource_type
+    field | to_cs_type:ResourceType
+    field.type:Enum
+    field.type_name:.monstershot.ResourceType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:reward_resource_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:reward_resource_amount
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type
+enum.name:MissionType
+  value.name:MissionTypeNone
+  value.number:0
+  value.name:MissionTypeTotalLoginCount
+  value.number:1
+  value.name:MissionTypeTotalLuckMaxUnitCount
+  value.number:2
+  value.name:MissionTypeTotalFirstMultiPlayCount
+  value.number:3
+  value.name:MissionTypeTotalClearCount
+  value.number:4
+  value.name:MissionTypeTotalUnitCollectionCount
+  value.number:5
+  value.name:MissionTypeTotalPlayCount
+  value.number:6
+  value.name:MissionTypeTargetQuestClear
+  value.number:7
+  value.name:MissionTypeTargetStageClearSRank
+  value.number:8
+

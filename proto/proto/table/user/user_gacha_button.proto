@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/04/21
+// ユーザーガチャボタン情報.
+message UserGachaButtonData {
+    int64 id                                       =   1;
+    int64 user_id                                =   2; // ユーザーID.
+    int64 gacha_button_id                          =   3; // ガチャボタンID.
+    int64 gacha_schedule_id                        =   4; // ガチャスケジュールID.
+    int64 purchase_count                           =   5; // このガチャボタン/ガチャスケジュールのガチャ引いた回数.
+
+    reserved "primary_key:id";
+    reserved "index:user_id";
+    reserved "index:gacha_button_id";
+    reserved "index:gacha_schedule_id";
+    reserved "tag:is_client_user_data";
+}

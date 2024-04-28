@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// ミッション種別.
+enum MissionGroupType {
+    MissionGroupTypeNone                               =   0;
+    MissionGroupTypeNormal                             =   1;
+    MissionGroupTypeWeakly                             =   2;
+    MissionGroupTypeEvent                              =   3;
+}
+
+// state: TODO
+// ミッショングループ情報.
+message MissionGroupData {
+    int64 id                                      =   1;
+    MissionGroupType type                         =   2; // ミッション種別.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+    reserved "index:type";
+}

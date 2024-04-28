@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "table/master_battle/enemy.proto";
+import "table/master_battle/enemy_action.proto";
+import "table/master_battle/round.proto";
+import "table/master_battle/weak_point.proto";
+import "table/master_battle/weak_point_position.proto";
+import "table/master_common/canpaign.proto";
+import "table/master_common/config.proto";
+import "table/master_common/identifable_item.proto";
+import "table/master_common/item.proto";
+import "table/master_common/resource_lottery.proto";
+import "table/master_common/resource_lottery_item.proto";
+import "table/master_common/resource_set.proto";
+import "table/master_common/resource_set_item.proto";
+import "table/master_event/daily_event_table.proto";
+import "table/master_event/daily_event_table_item.proto";
+import "table/master_gacha/gacha.proto";
+import "table/master_gacha/gacha_button.proto";
+import "table/master_gacha/gacha_schedule.proto";
+import "table/master_message/message.proto";
+import "table/master_mission/mission.proto";
+import "table/master_mission/mission_group.proto";
+import "table/master_mission/mission_schedule.proto";
+import "table/master_other/advice.proto";
+import "table/master_other/log.proto";
+import "table/master_other/login_bonus.proto";
+import "table/master_other/login_bonus_item.proto";
+import "table/master_other/user_rank_exp.proto";
+import "table/master_other/version.proto";
+import "table/master_quest/event_schedule.proto";
+import "table/master_quest/quest.proto";
+import "table/master_quest/quest_group.proto";
+import "table/master_quest/stage.proto";
+import "table/master_quest/stage_special_reward.proto";
+import "table/master_shop/exchange.proto";
+import "table/master_shop/exchange_item.proto";
+import "table/master_shop/exchange_schedule.proto";
+import "table/master_shop/shop.proto";
+import "table/master_shop/shop_item.proto";
+import "table/master_shop/shop_schedule.proto";
+import "table/master_unit/ability.proto";
+import "table/master_unit/combo.proto";
+import "table/master_unit/equipment.proto";
+import "table/master_unit/skill.proto";
+import "table/master_unit/unit.proto";
+import "table/master_unit/unit_category.proto";
+import "table/master_unit/unit_evolution.proto";
+import "table/master_unit/unit_level_exp.proto";
+
+// クライアントに渡されるマスターデータ.
+message ClientMasterData {
+    repeated EnemyData enemys                                         =   1; // .
+    repeated EnemyActionData enemy_actions                            =   2; // .
+    repeated RoundData rounds                                         =   3; // .
+    repeated WeakPointData weak_points                                =   4; // .
+    repeated WeakPointPositionData weak_point_positions               =   5; // .
+    repeated CanpaignData canpaigns                                   =   6; // .
+    repeated ConfigData configs                                       =   7; // .
+    repeated IdentifableItemData identifable_items                    =   8; // .
+    repeated ItemData items                                           =   9; // .
+    repeated ResourceLotteryData resource_lotterys                    =  10; // .
+    repeated ResourceLotteryItemData resource_lottery_items           =  11; // .
+    repeated ResourceSetData resource_sets                            =  12; // .
+    repeated ResourceSetItemData resource_set_items                   =  13; // .
+    repeated DailyEventTableData daily_event_tables                   =  14; // .
+    repeated DailyEventTableItemData daily_event_table_items          =  15; // .
+    repeated GachaData gachas                                         =  16; // .
+    repeated GachaButtonData gacha_buttons                            =  17; // .
+    repeated GachaScheduleData gacha_schedules                        =  18; // .
+    repeated MessageData messages                                     =  19; // .
+    repeated MissionData missions                                     =  20; // .
+    repeated MissionGroupData mission_groups                          =  21; // .
+    repeated MissionScheduleData mission_schedules                    =  22; // .
+    repeated AdviceData advices                                       =  23; // .
+    repeated LogData logs                                             =  24; // .
+    repeated LoginBonusData login_bonuss                              =  25; // .
+    repeated LoginBonusItemData login_bonus_items                     =  26; // .
+    repeated UserRankExpData user_rank_exps                           =  27; // .
+    repeated VersionData versions                                     =  28; // .
+    repeated EventScheduleData event_schedules                        =  29; // .
+    repeated QuestData quests                                         =  30; // .
+    repeated QuestGroupData quest_groups                              =  31; // .
+    repeated StageData stages                                         =  32; // .
+    repeated StageSpecialRewardData stage_special_rewards             =  33; // .
+    repeated ExchangeData exchanges                                   =  34; // .
+    repeated ExchangeItemData exchange_items                          =  35; // .
+    repeated ExchangeScheduleData exchange_schedules                  =  36; // .
+    repeated ShopData shops                                           =  37; // .
+    repeated ShopItemData shop_items                                  =  38; // .
+    repeated ShopScheduleData shop_schedules                          =  39; // .
+    repeated AbilityData abilitys                                     =  40; // .
+    repeated ComboData combos                                         =  41; // .
+    repeated EquipmentData equipments                                 =  42; // .
+    repeated SkillData skills                                         =  43; // .
+    repeated UnitData units                                           =  44; // .
+    repeated UnitCategoryData unit_categorys                          =  45; // .
+    repeated UnitEvolutionData unit_evolutions                        =  46; // .
+    repeated UnitLevelExpData unit_level_exps                         =  47; // .
+}

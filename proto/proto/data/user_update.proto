@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "table/user/user.proto";
+import "table/user/user_backup.proto";
+import "table/user/user_deck.proto";
+import "table/user/user_exchange_item.proto";
+import "table/user/user_gacha_button.proto";
+import "table/user/user_item.proto";
+import "table/user/user_message.proto";
+import "table/user/user_mission.proto";
+import "table/user/user_paid_crystal.proto";
+import "table/user/user_shop_item.proto";
+import "table/user/user_stage.proto";
+import "table/user/user_unit.proto";
+import "table/user/user_unit_collection.proto";
+
+// クライアントに渡されるユーザーデータ.
+message UserUpdateData {
+    UserData user                                                     =   1; // .
+    repeated UserBackupData user_backups                              =   2; // .
+    repeated UserDeckData user_decks                                  =   3; // .
+    repeated UserExchangeItemData user_exchange_items                 =   4; // .
+    repeated UserGachaButtonData user_gacha_buttons                   =   5; // .
+    repeated UserItemData user_items                                  =   6; // .
+    repeated UserMessageData user_messages                            =   7; // .
+    repeated UserMissionData user_missions                            =   8; // .
+    repeated UserPaidCrystalData user_paid_crystals                   =   9; // .
+    repeated UserShopItemData user_shop_items                         =  10; // .
+    repeated UserStageData user_stages                                =  11; // .
+    repeated UserUnitData user_units                                  =  12; // .
+    repeated UserUnitCollectionData user_unit_collections             =  13; // .
+}

@@ -1,0 +1,19 @@
+protoc_path : "bin/protoc"
+protoc_plugin_path : "bin/plugin/protoc-gen-csharp-template"
+src_base_path : "./proto/"
+template_base_path : "template/"
+out_base_path : "./output_sample/"
+items:
+  #============================================================
+  # Model(Table)のサンプル出力ファイルを生成.
+  #============================================================
+  - name: "generate_sample_cs"
+    message: "== サンプル出力ファイル 生成中."
+    src_path_pattern: "./table/**/*.proto"
+    items:
+      # Xxxx.txt 生成
+      - message: "==== Xxxx.txt 生成中"
+        template_path: "sample.sbncs"
+        file_suffix: ".txt"
+        out_dir_path: ""
+        is_editable: false

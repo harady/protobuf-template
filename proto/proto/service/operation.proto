@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// 運用ツール関連のAPI
+service Operation {
+    rpc Test (OperationTestRequest) returns (OperationTestResponse);
+    rpc Test1 (OperationTestRequest) returns (OperationTestResponse);
+    rpc Test2 (OperationTestRequest) returns (OperationTestResponse);
+    rpc Test3 (OperationTestRequest) returns (OperationTestResponse);
+    rpc Test4 (OperationTestRequest) returns (OperationTestResponse);
+    rpc Test5 (OperationTestRequest) returns (OperationTestResponse);
+    // マスターバージョン更新.
+    rpc UpdateMasterVersion (OperationUpdateMasterVersionRequest) returns (OperationUpdateMasterVersionResponse);
+    // イベントスケジュール更新.
+    rpc UpdateEventSchedule (OperationUpdateEventScheduleRequest) returns (OperationUpdateEventScheduleResponse);
+}
+
+
+//====================================================================
+// デバッグ/テスト リクエスト.
+message OperationTestRequest {
+    string message                        =   1; // .
+}
+
+// デバッグ/テスト レスポンス.
+message OperationTestResponse {
+    string message                        =   1; // .
+}
+
+//====================================================================
+// デバッグ/マスターバージョン更新 リクエスト.
+message OperationUpdateMasterVersionRequest {
+    string message                        =   1; // .
+}
+
+// デバッグ/マスターバージョン更新 レスポンス.
+message OperationUpdateMasterVersionResponse {
+    string message                        =   1; // .
+}
+
+
+//====================================================================
+// デバッグ/イベントスケジュール更新 リクエスト.
+message OperationUpdateEventScheduleRequest {
+    string message                        =   1; // .
+}
+
+// デバッグ/イベントスケジュール更新 レスポンス.
+message OperationUpdateEventScheduleResponse {
+    string message                        =   1; // .
+}

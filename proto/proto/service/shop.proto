@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+service Shop {
+    // ショップ/GooglePlay購入.
+    rpc PurchaseGooglePlay (ShopPurchaseGooglePlayRequest) returns (ShopPurchaseGooglePlayResponse);
+    // ショップ/AppStore購入.
+    rpc PurchaseAppStore (ShopPurchaseAppStoreRequest) returns (ShopPurchaseAppStoreResponse);
+    // ショップ/デバッグ購入.
+    rpc PurchaseDebug (ShopPurchaseDebugRequest) returns (ShopPurchaseDebugResponse);
+}
+
+
+//====================================================================
+// state: OK 2019/03/23
+// ショップ/GooglePlay購入 リクエスト.
+message ShopPurchaseGooglePlayRequest {
+    int64 shop_item_id                            =   1; // 購入するショップ商品のID.
+    string signed_data                            =   2; // GooglePlayのsigned_data.
+    string signature                              =   3; // GooglePlayのsignature.
+}
+
+// state: OK 2019/03/23
+// ショップ/GooglePlay購入 レスポンス.
+message ShopPurchaseGooglePlayResponse {
+}
+
+
+//====================================================================
+// state: OK 2019/03/23
+// ショップ/AppStore購入 リクエスト.
+message ShopPurchaseAppStoreRequest {
+    int64 shop_item_id                            =   1; // 購入するショップ商品のID.
+    string receipt                                =   2; // AppleAppStoreのreceipt.
+}
+
+// state: OK 2019/03/23
+// ショップ/AppStore購入 レスポンス.
+message ShopPurchaseAppStoreResponse {
+}
+
+
+//====================================================================
+// state: OK 2019/03/23
+// ショップ/デバッグ購入 リクエスト.
+message ShopPurchaseDebugRequest {
+    int64 shop_item_id                            =   1; // 購入するショップ商品のID.
+}
+
+// state: OK 2019/03/23
+// ショップ/デバッグ購入 レスポンス.
+message ShopPurchaseDebugResponse {
+}

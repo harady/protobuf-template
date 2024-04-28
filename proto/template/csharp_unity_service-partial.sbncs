@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using UnityEngine;
+
+{{ for service in file.service }}
+public partial class {{ service.name }}Service
+{
+{{ for method in service.method }}
+	public void {{ method.name }}(Action<{{ method.output_type | to_short_name }}> onSuccess)
+	{
+		var request = new {{ method.input_type | to_short_name }}();
+		{{ method.name }}Inner(
+			request: request,
+			onSuccess: (response) => {
+				onSuccess?.Invoke(response);
+			}
+		);
+	}
+{{ end }}
+}
+{{ end -}}

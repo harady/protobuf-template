@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/01/02
+// ユーザーミッション情報.
+message UserMissionData {
+    int64 id                                       =   1;
+    int64 user_id                                =   2; // ユーザーID.
+    int64 mission_id                               =   3; // ミッションID.
+    int64 progress                                 =   4; // このミッションの進捗.
+
+    reserved "primary_key:id";
+    reserved "index:user_id";
+    reserved "tag:is_client_user_data";
+}

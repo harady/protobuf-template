@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/6/2 TODO 定期的に見直す.
+// サーバーのみで保持するバトル情報
+message BattleServerData {
+    int64 id                                      =   1; // .
+}

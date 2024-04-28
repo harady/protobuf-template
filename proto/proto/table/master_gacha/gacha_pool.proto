@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "table/master_unit/unit.proto";
+
+// state: OK 2019/04/21
+// ガチャ抽選枠情報.
+message GachaPoolData {
+    int64 id                                      =   1;
+    string name                                   =   2; // プール名.
+    int64 gacha_id                                =   3; // このガチャ抽選枠が所属するガチャのgacha.id.
+    int64 base_gacha_pool_id                      =   4; // このガチャ抽選枠のベースとなるガチャ抽選枠のgacha_pool.id(0以外を指定すると指定したgacha_pool.idのgacha_pool_itemが追加される).
+    bool is_extra                                 =   5; // おまけ抽選枠か否か.
+    bool is_pickup                                =   6; // ピックアップ枠か否か.
+    bool is_guarantee                             =   7; // 保証抽選から排出されるか否か.
+    int64 rarity                                  =   8; // この抽選枠のレア度.
+    UnitAttribute attribute                       =   9; // この抽選枠の属性.
+    int64 weight                                  =  10; // 抽選枠の重み.
+
+    reserved "primary_key:id";
+    reserved "tag:is_master";
+    reserved "index:gacha_id";
+}

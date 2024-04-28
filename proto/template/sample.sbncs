@@ -1,0 +1,36 @@
+﻿■file.message_type
+{{- for message in file.message_type }}
+message.name:{{ message.name }}
+{{- for field in message.field }}
+  field.name:{{ field.name }}
+    field | to_cs_type:{{ field | to_cs_type }}
+    field.type:{{ field.type }}
+    field.type_name:{{ field.type_name }}
+    field.label:{{ field.label }}
+    field | is_repeated:{{ field | is_repeated }}
+{{- end }}
+{{- for field in message.extension }}
+  field.name:{{ field.name }}
+    field | to_cs_type:{{ field | to_cs_type }}
+    field.type:{{ field.type }}
+    field.type_name:{{ field.type_name }}
+    field | is_repeated:{{ field | is_repeated }}
+{{- end }}
+{{ end }}
+■file.service
+{{- for service in file.service }}
+service.name:{{ service.name }}
+{{- for method in service.method }}
+  method.name:{{ method.name }}
+    input_type.name:{{ method.input_type.name }}
+    output_type.name:{{ method.output_type.name }}
+{{- end }}
+{{ end }}
+■file.enum_type
+{{- for enum in file.enum_type }}
+enum.name:{{ enum.name }}
+{{- for value in enum.value }}
+  value.name:{{ value.name }}
+  value.number:{{ value.number }}
+{{- end }}
+{{ end }}

@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace AwsDotnetCsharp
+{
+{{- for message in file.message_type }}
+	public partial class {{ message.name }}
+	{
+
+	}
+{{ end -}}
+}

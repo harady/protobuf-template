@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "enum/common.proto";
+
+// state: OK 2019/04/21
+// ガチャボタン情報.
+message GachaButtonData {
+    int64 id                                      =   1;
+    string name                                   =   2; // 名前.
+    int64 gacha_id                                =   3; // 所属するガチャのgacha.id.
+    int64 view_order                              =   4; // 表示順序.
+    int64 draw_count                              =   5; // 抽選枠個数.
+    int64 extra_count                             =   6; // おまけ抽選数数.
+    int64 guarantee_count                         =   7; // 保証数.
+    int64 purchase_count                          =   8; // 引ける回数.
+    ResourceType cost_resource_type               =   9; // コストリソース種別.
+    int64 cost_resource_id                        =  10; // コストリソースID.
+    int64 cost_resource_amount                    =  11; // コストリソース数.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+    reserved "index:gacha_id";
+}

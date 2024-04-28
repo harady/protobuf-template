@@ -1,0 +1,10 @@
+master_battle
+master_common
+master_event
+master_gacha
+master_message
+master_mission
+master_other
+master_quest
+master_shop
+master_unit

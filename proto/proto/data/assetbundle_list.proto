@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "data/assetbundle.proto";
+
+// state: OK 2019/6/2
+// アセットバンドルリスト情報.
+message AssetbundleListData {
+    int64 version                                           =   1; // リソース種別に対応したリソースのID.
+    repeated AssetbundleData assetbundles                   =   2; // リソース数.
+}

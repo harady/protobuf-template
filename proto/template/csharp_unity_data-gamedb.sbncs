@@ -1,0 +1,106 @@
+﻿using System.Collections.Generic;
+{{ for message in file.message_type }}
+{{- has_id = (message.field[0].name == "id") }}
+{{- unique_indexs = message | get_unique_indexs }}
+{{- indexs = message | get_indexs }}
+public partial class {{ message.name }} : IUnique<long>
+{
+	#region NullObject
+	public static {{ message.name }} Null => NullObjectContainer.Get<{{ message.name }}>();
+
+	public bool isNull => (this == Null);
+	#endregion
+	{{- if has_id }}
+	#region GameDbWrapper(DataTable)
+	public static DataTable<long, {{ message.name }}> dataTable {
+		get {
+			DataTable<long, {{ message.name }}> result;
+			if (GameDb.TableExists<long, {{ message.name }}>()) {
+				result = GameDb.From<long, {{ message.name }}>();
+			} else {
+				result = GameDb.CreateTable<long, {{ message.name }}>();
+				Setup{{ message.name }}TableIndexGenerated(result);
+				Setup{{ message.name }}TableIndex(result);
+			}
+			return result;
+		}
+	}
+
+	public static int Count => dataTable.Count;
+
+	public static List<{{ message.name }}> GetDataList()
+	{
+		return dataTable.dataList;
+	}
+
+	public static void SetData({{ message.name }} data)
+	{
+		dataTable.Insert(data);
+	}
+
+	public static void AddDataList(IEnumerable<{{ message.name }}> dataList)
+	{
+		dataTable.InsertRange(dataList);
+	}
+
+	public static void SetDataList(IEnumerable<{{ message.name }}> dataList)
+	{
+		Clear();
+		dataTable.InsertRange(dataList);
+	}
+
+	public static void Clear()
+	{
+		dataTable.DeleteAll();
+	}
+
+	static partial void Setup{{ message.name }}TableIndex(DataTable<long, {{ message.name }}> targetDataTable);
+
+	private static void Setup{{ message.name }}TableIndexGenerated(DataTable<long, {{ message.name }}> targetDataTable)
+	{
+		{{- for field in message.field }}
+			{{- if (field.name == "id") || (unique_indexs | array.contains field.name) }}
+		targetDataTable.CreateUniqueIndex("{{ field.name | to_pascal }}", aData => (object)aData.{{ field.name | to_camel }});
+			{{- end }}
+		{{- end }}
+		{{- for field in message.field }}
+			{{- if (indexs | array.contains field.name) }}
+		targetDataTable.CreateIndex("{{ field.name | to_pascal }}", aData => (object)aData.{{ field.name | to_camel }});
+			{{- end }}
+		{{- end }}
+	}
+	#endregion
+	{{- end }}
+	{{- for field in message.field }}
+		{{- if (field.name == "id") || (unique_indexs | array.contains field.name) }}
+	#region DataTableUniqueIndex({{ field.name | to_pascal }})
+	public static {{ message.name }} GetDataBy{{ field.name | to_pascal }}({{ field | to_cs_type }} {{ field.name | to_camel }})
+	{
+		return dataTable.GetData("{{ field.name | to_pascal }}", (object){{ field.name | to_camel }});
+	}
+
+	public static void RemoveDataBy{{ field.name | to_pascal }}s(ICollection<{{ field | to_cs_type }}> {{ field.name | to_camel }}s)
+	{
+		{{ field.name | to_camel }}s.ForEach(a{{ field.name | to_pascal }} => RemoveDataBy{{ field.name | to_pascal }}(a{{ field.name | to_pascal }}));
+	}
+
+	public static void RemoveDataBy{{ field.name | to_pascal }}({{ field | to_cs_type }} {{ field.name | to_camel }})
+	{
+		dataTable.DeleteByKey("{{ field.name | to_pascal }}", (object){{ field.name | to_camel }});
+	}
+	#endregion
+		{{- end }}
+	{{- end }}
+	{{- for field in message.field }}
+		{{- if (indexs | array.contains field.name) }}
+	#region DataTableIndex ({{ field.name | to_pascal }})
+	public static List<{{ message.name }}> GetDataListBy{{ field.name | to_pascal }}({{ field | to_cs_type }} {{ field.name | to_camel }})
+	{
+		return dataTable.GetDataList("{{ field.name | to_pascal }}", (object){{ field.name | to_camel }});
+	}
+	#endregion
+		{{- end }}
+	{{- end }}
+}
+{{- end }}
+

@@ -1,0 +1,47 @@
+﻿■file.message_type
+message.name:UserBattleData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:user_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:stage_id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:continue_count
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:battle_client_data
+    field | to_cs_type:BattleClientData
+    field.type:Message
+    field.type_name:.monstershot.BattleClientData
+    field.label:Optional
+    field | is_repeated:false
+  field.name:battle_server_data
+    field | to_cs_type:BattleServerData
+    field.type:Message
+    field.type_name:.monstershot.BattleServerData
+    field.label:Optional
+    field | is_repeated:false
+  field.name:start_at
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type

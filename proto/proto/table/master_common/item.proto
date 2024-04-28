@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/01/02
+// アイテムカテゴリ.
+enum ItemCategory {
+    ItemCategoryNone                    =   0;
+    ItemCategoryUnitPowerup             =   1; // ユニット強化素材.
+    ItemCategoryUnitEvolution           =   2; // ユニット進化素材.
+    ItemCategoryStaminaRecover          =   3; // スタミナ回復.
+    ItemCategoryQuestTicket             =   4; // クエストチケット.
+    ItemCategoryEventPoint              =   5; // イベントポイント.
+}
+
+// state: OK 2019/01/02
+// アイテム種別.
+enum ItemType {
+    ItemTypeNone                        =   0;
+    ItemTypeUnitExpUp                   = 101; // 経験値強化素材 [param_a:獲得経験値][param_b:属性].
+    ItemTypeUnitHpPlusUp                = 102; // HP+強化素材 [param_a:獲得HP+値][param_b:-].
+    ItemTypeUnitAttackPlusUp            = 103; // 攻撃力+強化素材 [param_a:獲得攻撃力+値][param_b:-].
+    ItemTypeUnitSpeedPlusUp             = 104; // スピード+強化素材 [param_a:獲得スピート+値][param_b:-].
+    ItemTypeUnitEvolutionMaterial       = 201; // 進化素材 [param_a:-][param_b:-].
+    ItemTypeStaminaRecover              = 301; // スタミナ回復 [param_a:-][param_b:-].
+    ItemTypeQuestTicket                 = 401; // クエストチケット [param_a:stage.id][param_b:-].
+    ItemTypeEventPoint                  = 501; // イベントポイント [param_a:exchange.id][param_b:-].
+}
+
+
+// state: OK 2018/12/30
+// アイテム情報.
+message ItemData {
+    int64 id                                      =   1;
+    string name                                   =   2; // アイテム名.
+    int64 attribute                               =   3; // 属性.
+    string description                            =   4; // アイテムの説明.
+    ItemCategory category                         =   5; // アイテムカテゴリ.
+    ItemType type                                 =   6; // アイテム種別.
+    int64 owned_limit                             =   7; // 所持上限.
+    int64 param_a                                 =   8; // パラメータA.
+    int64 param_b                                 =   9; // パラメータB.
+    
+    reserved "tag:is_client_master";
+    reserved "primary_key:id";
+    reserved "index:category";
+    reserved "index:type";
+}

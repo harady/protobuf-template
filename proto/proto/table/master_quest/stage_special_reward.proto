@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "enum/common.proto";
+
+// state: OK 2019/11/17
+// ステージスペシャル報酬情報.
+message StageSpecialRewardData {
+    int64 id                                                =   1;
+    string name                                             =   2; // スペシャル報酬名.
+    int64 stage_id                                          =   3; // このスペシャル報酬に対応するステージの[stage.id].
+    BattleRewardType battle_reward_type                     =   4; // このスペシャル報酬のバトル報酬種別.
+    int64 param_a                                           =   5; // このスペシャル報酬のパラメータA.
+    int64 param_b                                           =   6; // このスペシャル報酬のパラメータB.
+    int64 resource_lottery_id                               =   7; // このスペシャル報酬のリソース抽選の[resource_lottery.id].
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+    reserved "index:stage_id";
+}

@@ -1,0 +1,95 @@
+protoc_path : "bin/protoc"
+protoc_plugin_path : "bin/plugin/protoc-gen-csharp-template"
+src_base_path : "./proto/"
+template_base_path : "template/"
+out_base_path : "output/unity/"
+file_name_case : "Pascal"
+items:
+  #============================================================
+  # Unity Model(TableData)のC#ファイルを生成.
+  #============================================================
+  - name: "generate_model_table_cs"
+    message: "== Unity Model(TableData)のC#ファイルを生成中."
+    src_path_pattern: "table/**/*.proto"
+    items:
+      # Unity XxxxData.cs 生成
+      - message: "==== Unity XxxxData.cs 生成中"
+        template_path: "csharp_unity_data-partial.sbncs"
+        file_suffix: "Data.cs"
+        out_dir_path: "Data"
+        is_editable: true
+      # Unity XxxxData_GeneratedGameDB.cs 生成
+      - message: "==== Unity XxxxData_GeneratedGameDB.cs 生成中"
+        template_path: "csharp_unity_data-gamedb.sbncs"
+        file_suffix: "Data_GeneratedGameDB.cs"
+        out_dir_path: "Data/Generated"
+      # Unity XxxxData_GeneratedPropertie.cs 生成
+      - message: "==== Unity XxxxData_GeneratedPropertie.cs 生成中"
+        template_path: "csharp_unity_data-propertie.sbncs"
+        file_suffix: "Data_GeneratedPropertie.cs"
+        out_dir_path: "Data/Generated"
+  #============================================================
+  # Unity Model(Data)のC#ファイルを生成.
+  #============================================================
+  - name: "generate_model_data_cs"
+    message: "== Unity Model(Data)のC#ファイルを生成中."
+    src_path_pattern: "data/**/*.proto"
+    items:
+      # Unity XxxxData.cs 生成
+      - message: "==== Unity XxxxData.cs 生成中"
+        template_path: "csharp_unity_data-partial.sbncs"
+        file_suffix: "Data.cs"
+        out_dir_path: "Data"
+        is_editable: true
+      # Unity XxxxData_GeneratedPropertie.cs 生成
+      - message: "==== Unity XxxxData_GeneratedPropertie.cs 生成中"
+        template_path: "csharp_unity_data-propertie.sbncs"
+        file_suffix: "Data_GeneratedPropertie.cs"
+        out_dir_path: "Data/Generated"
+      # Unity XxxxData_GeneratedMaster.cs 生成
+      - message: "==== Unity XxxxData_GeneratedMaster.cs 生成中"
+        src_path_pattern: "./data/**/{master,client_master}.proto"
+        template_path: "csharp_unity_data-master.sbncs"
+        file_suffix: "Data_GeneratedMaster.cs"
+        out_dir_path: "Data/Generated"
+      # Unity XxxxData_GeneratedUserUpdate.cs 生成
+      - message: "==== Unity XxxxData_GeneratedUserUpdate.cs 生成中"
+        src_path_pattern: "./data/**/user_update.proto"
+        template_path: "csharp_unity_data-user_update.sbncs"
+        file_suffix: "Data_GeneratedUserUpdate.cs"
+        out_dir_path: "Data/Generated"
+  #============================================================
+  # Unity ServiceのC#ファイルを生成.
+  #============================================================
+  - name: "generate_service_cs"
+    message: "== Unity ServiceのC#ファイルを生成中."
+    src_path_pattern: "service/**/*.proto"
+    items:
+      # Unity XxxxService.cs 生成
+      - message: "==== Unity XxxxService.cs 生成中"
+        template_path: "csharp_unity_service-partial.sbncs"
+        file_suffix: "Service.cs"
+        out_dir_path: "Service"
+        is_editable: true
+      # Unity XxxxService_Generated.cs 生成
+      - message: "==== Unity XxxxService_Generated.cs 生成中"
+        template_path: "csharp_unity_service.sbncs"
+        file_suffix: "Service_Generated.cs"
+        out_dir_path: "Service/Generated"
+      # Unity XxxxServiceData.cs 生成
+      - message: "==== Unity XxxxServiceData.cs 生成中"
+        template_path: "csharp_unity_data-partial.sbncs"
+        file_suffix: "ServiceData.cs"
+        out_dir_path: "Service"
+  #============================================================
+  # Unity EnumのC#ファイルを生成.
+  #============================================================
+  - name: "generate_enum_cs"
+    message: "== Unity EnumのC#ファイルを生成中."
+    src_path_pattern: "{data,table,enum}/**/*.proto"
+    items:
+      # Unity data/table/enum XxxxEnum.cs 生成
+      - message: "==== Unity data/table/enum XxxxEnum.cs 生成中"
+        template_path: "csharp_enum.sbncs"
+        file_suffix: "Enum.cs"
+        out_dir_path: "Enum/Generated"

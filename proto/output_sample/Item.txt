@@ -1,0 +1,93 @@
+﻿■file.message_type
+message.name:ItemData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:name
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:attribute
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:description
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:category
+    field | to_cs_type:ItemCategory
+    field.type:Enum
+    field.type_name:.monstershot.ItemCategory
+    field.label:Optional
+    field | is_repeated:false
+  field.name:type
+    field | to_cs_type:ItemType
+    field.type:Enum
+    field.type_name:.monstershot.ItemType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:owned_limit
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:param_a
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:param_b
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type
+enum.name:ItemCategory
+  value.name:ItemCategoryNone
+  value.number:0
+  value.name:ItemCategoryUnitPowerup
+  value.number:1
+  value.name:ItemCategoryUnitEvolution
+  value.number:2
+  value.name:ItemCategoryStaminaRecover
+  value.number:3
+  value.name:ItemCategoryQuestTicket
+  value.number:4
+  value.name:ItemCategoryEventPoint
+  value.number:5
+
+enum.name:ItemType
+  value.name:ItemTypeNone
+  value.number:0
+  value.name:ItemTypeUnitExpUp
+  value.number:101
+  value.name:ItemTypeUnitHpPlusUp
+  value.number:102
+  value.name:ItemTypeUnitAttackPlusUp
+  value.number:103
+  value.name:ItemTypeUnitSpeedPlusUp
+  value.number:104
+  value.name:ItemTypeUnitEvolutionMaterial
+  value.number:201
+  value.name:ItemTypeStaminaRecover
+  value.number:301
+  value.name:ItemTypeQuestTicket
+  value.number:401
+  value.name:ItemTypeEventPoint
+  value.number:501
+

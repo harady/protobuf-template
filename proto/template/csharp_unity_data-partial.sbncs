@@ -1,0 +1,11 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+{{ for message in file.message_type -}}
+public partial class {{ message.name }}
+{
+
+}
+
+{{ end }}

@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// 交換所種別.
+enum ExchangeType {
+    ExchangeTypeNone                    =   0;
+    ExchangeTypeShop                    =   1; // ショップ内交換所.
+    ExchangeTypeHidden                  =   2; // 非表示交換所.
+    ExchangeTypeDebug                   =  99; // ショップ内交換所(デバッグ用).
+}
+
+// state: OK 2019/04/30
+// 交換所情報.
+message ExchangeData {
+    int64 id                                      =   1;
+    string name                                   =   2; // 交換所名.
+    ExchangeType type                             =   3; // 交換所種別.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+}

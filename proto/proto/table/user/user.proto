@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/01/02
+// state: TODO 定期的に見直す.
+// ユーザー情報.
+message UserData {
+    int64 id                                   =   1;
+    string name                                =   2; // ユーザー名.
+    string token                               =   3; // トークン.
+    int64 code                                 =   4; // ユーザーコード.
+    int64 rank                                 =   5; // ランク.
+    int64 exp                                  =   6; // 経験値.
+    int64 money                                =   7; // ゲーム内通貨.
+    int64 stamina                              =   8; // スタミナ.
+    int64 last_stamina_update_at               =   9; // 最終スタミナ更新日時.
+    int64 free_crystal                         =  10; // 無償課金アイテム.
+    int64 paid_crystal                         =  11; // 有償課金アイテム.
+    int64 current_deck_id                      =  12; // 選択中デッキ.
+    int64 max_stamina_plus                     =  13; // 最大スタミナ拡張数.
+    int64 deck_num_plus                        =  14; // 所持デッキ上限拡張数.
+    int64 max_friend_num_plus                  =  15; // フレンド数上限拡張数.
+    int64 unit_box_num_plus                    =  16; // ユニット所持上限拡張数.
+    int64 friend_user_unit_id                =  17; // フレンド使用ユーザーユニットId.
+
+    reserved "primary_key:id";
+    reserved "index:token";
+    reserved "index:code";
+}

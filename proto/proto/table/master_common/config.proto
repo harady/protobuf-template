@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/02/09
+// コンフィグ情報.
+message ConfigData {
+    int64 id                              =   1;
+    string key                            =   2; // キー.
+    int64 value                           =   3; // 数値.
+    string text                           =   4; // テキスト.
+
+    reserved "tag:is_client_master";
+    reserved "primary_key:id";
+    reserved "unique_index:key";
+}

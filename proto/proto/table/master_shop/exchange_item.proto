@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "enum/common.proto";
+
+// state: OK 2019/04/30
+// 交換所商品情報.
+message ExchangeItemData {
+    int64 id                                                =   1;
+    string name                                             =   2; // 商品名.
+    int64 exchange_id                                       =   3; // この商品が含まれる交換所のID.
+    ResourceType cost_resource_type                         =   4; // コストリソース種別.
+    int64 cost_resource_id                                  =   5; // コストリソースID.
+    int64 cost_resource_amount                              =   6; // コストリソース数.
+    ResourceType resource_type                              =   7; // 獲得リソース種別.
+    int64 resource_id                                       =   8; // 獲得リソースID.
+    int64 resource_amount                                   =   9; // 獲得リソース数.
+    int64 resource_set_id                                   =  10; // 獲得できる商品.
+    int64 limit_count                                       =  11; // 1開催(スケジュール)毎の購入制限回数.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+    reserved "unique_index:platform_resource_id";
+    reserved "index:exchange_id";
+}

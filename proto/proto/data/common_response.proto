@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "data/user_update.proto";
+
+// state: TODO
+message CommonResponse {
+    UserUpdateData user_update                              =   1; // ユーザーデータ更新情報.
+    int64 server_time                                       =   2; // サーバー時刻.
+    string app_version                                      =   3; // 現在の最新のアプリバージョン.
+    int64 master_data_version                               =   4; // 現在のマスターデータのバージョン.
+    string master_data_url                                  =   5; // マスターデータ格納URL.
+    int64 asset_list_version                                =   6; // 現在のアセットバンドルリストのバージョン.
+    string asset_list_url                                   =   7; // アセットリスト格納URL.
+    string asset_base_url                                   =   8; // アセットバンドル格納URL.
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/2/23
+// デイリーイベントテーブル情報.
+// ※イベントスケジュール生成元.
+message DailyEventTableData {
+    int64 id                                      =   1;
+    string name                                   =   2; // 名前.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+}

@@ -1,0 +1,27 @@
+﻿■file.message_type
+message.name:MissionGroupData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:type
+    field | to_cs_type:MissionGroupType
+    field.type:Enum
+    field.type_name:.monstershot.MissionGroupType
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type
+enum.name:MissionGroupType
+  value.name:MissionGroupTypeNone
+  value.number:0
+  value.name:MissionGroupTypeNormal
+  value.number:1
+  value.name:MissionGroupTypeWeakly
+  value.number:2
+  value.name:MissionGroupTypeEvent
+  value.number:3
+

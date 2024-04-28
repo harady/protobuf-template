@@ -1,0 +1,2 @@
+﻿・{ "name": "round_data", "field": [ { "name": "id", "number": 1, "label": "label_optional", "type": "type_int64", "json_name": "id" }, { "name": "name", "number": 2, "label": "label_optional", "type": "type_string", "json_name": "name" }, { "name": "stage_id", "number": 3, "label": "label_optional", "type": "type_int64", "json_name": "stage_id" }, { "name": "round_no", "number": 4, "label": "label_optional", "type": "type_int64", "json_name": "round_no" } ], "reserved_name": [ "primary_key:id", "tag:is_client_master", "index:stage_id" ] }s
+id	name	stageId	roundNo	

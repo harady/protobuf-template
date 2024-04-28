@@ -1,0 +1,95 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "data/other_user.proto";
+import "data/battle_client.proto";
+import "data/battle_result.proto";
+import "data/battle_rewards.proto";
+
+service Battle {
+    // バトル/助っ人一覧.
+    rpc HelperList (BattleHelperListRequest) returns (BattleHelperListResponse);
+    // バトル/スタート.
+    rpc Start (BattleStartRequest) returns (BattleStartResponse);
+    // バトル/コンティニュー.
+    rpc Continue (BattleContinueRequest) returns (BattleContinueResponse);
+    // バトル/ギブアップ.
+    rpc Giveup (BattleGiveupRequest) returns (BattleGiveupResponse);
+    // バトル/クリア.
+    rpc Clear (BattleClearRequest) returns (BattleClearResponse);
+}
+
+
+//====================================================================
+// state: OK 2018/12/23
+// バトル/助っ人一覧 リクエスト.
+message BattleHelperListRequest {
+    int64 stage_id                                =   1; // ステージID.
+}
+
+// state: OK 2018/12/23
+// バトル/助っ人一覧 レスポンス.
+message BattleHelperListResponse {
+    repeated OtherUserData other_users        =   1; // 他ユーザーリスト
+}
+
+
+//====================================================================
+// state: OK 2019/4/6
+// バトル/スタート リクエスト.
+message BattleStartRequest {
+    int64 stage_id                                =   1; // ステージID.
+    int64 user_deck_id                          =   2; // ユーザーデッキID.
+    int64 helper_user_id                        =   3; // 助っ人のユーザーID.
+}
+
+// state: OK 2019/4/6
+// バトル/スタート レスポンス.
+message BattleStartResponse {
+    int64 battle_id                               =   1; // バトルID.
+    BattleClientData battle_client           =   2; // バトル初期状態情報.
+}
+
+
+//====================================================================
+// state: OK 2018/12/23
+// バトル/コンティニュー リクエスト.
+message BattleContinueRequest {
+    int64 battle_id                               =   1; // バトルID.
+}
+
+// state: OK 2018/12/23
+// バトル/コンティニュー レスポンス.
+message BattleContinueResponse {
+}
+
+
+//====================================================================
+// state: OK 2018/12/23
+// バトル/ギブアップ リクエスト.
+message BattleGiveupRequest {
+    int64 battle_id                               =   1; // バトルID.
+}
+
+// state: OK 2019/4/6
+// バトル/ギブアップ レスポンス.
+message BattleGiveupResponse {
+}
+
+
+//====================================================================
+// state: OK 2019/4/6
+// バトル/クリア リクエスト.
+message BattleClearRequest {
+    int64 battle_id                               =   1; // バトルID.
+    BattleResultData battle_result           =   2; // バトル結果情報.
+}
+
+// state: OK 2019/4/6
+// バトル/クリア レスポンス.
+message BattleClearResponse {
+    int64 result                                  =   1; // .
+    BattleRewardsData battle_rewards         =   2; // バトル報酬情報.
+}

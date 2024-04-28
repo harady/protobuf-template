@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+
+// state: TODO
+// ユーザー識別可能アイテム情報.
+message UserIdentifableItemData {
+    int64 id                                      =   1;
+    int64 user_id                               =   2; // ユーザー.
+    int64 identifable_item_id                     =   3; // 識別可能アイテムID.
+    int64 param_a                                 =   4; // パラメータA.
+    int64 param_b                                 =   5; // パラメータB.
+    
+    reserved "primary_key:id";
+    reserved "index:user_id";
+}

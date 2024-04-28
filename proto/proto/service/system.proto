@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+
+service System {
+    // システム/Ping.
+    rpc Ping (SystemPingRequest) returns (SystemPingResponse);
+    // システム/サインアップ.
+    rpc Signup (SystemSignupRequest) returns (SystemSignupResponse);
+    // システム/ログイン.
+    rpc Login (SystemLoginRequest) returns (SystemLoginResponse);
+}
+
+
+//====================================================================
+// state: OK 2018/01/14
+// システム/Ping リクエスト.
+message SystemPingRequest {
+}
+
+// state: OK 2018/01/14
+// システム/Ping レスポンス.
+message SystemPingResponse {
+}
+
+
+//====================================================================
+// state: OK 2018/12/30
+// システム/サインアップ リクエスト.
+message SystemSignupRequest {
+    string name                                   =   1; // .
+}
+
+// state: OK 2018/12/30
+// システム/サインアップ レスポンス.
+message SystemSignupResponse {
+    string token                                  =   1;
+    string session_id                             =   2;
+}
+
+
+//====================================================================
+// state: OK 2018/12/30
+// システム/ログイン リクエスト.
+message SystemLoginRequest {
+    string token                                  =   1;
+}
+
+// state: OK 2018/12/30
+// システム/ログイン レスポンス.
+message SystemLoginResponse {
+    string session_id                             =   1;
+}
+

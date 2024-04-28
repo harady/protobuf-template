@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+service Debug {
+    // デバッグ/サーバー時刻設定.
+    rpc SetServerTime (DebugSetServerTimeRequest) returns (DebugSetServerTimeResponse);
+    rpc Test (DebugTestRequest) returns (DebugTestResponse);
+    rpc Test1 (DebugTestRequest) returns (DebugTestResponse);
+    rpc Test2 (DebugTestRequest) returns (DebugTestResponse);
+    rpc Test3 (DebugTestRequest) returns (DebugTestResponse);
+    rpc Test4 (DebugTestRequest) returns (DebugTestResponse);
+    rpc Test5 (DebugTestRequest) returns (DebugTestResponse);
+    rpc Test6 (DebugTestRequest) returns (DebugTestResponse);
+}
+
+
+//====================================================================
+// デバッグ/サーバー時刻設定 リクエスト.
+message DebugSetServerTimeRequest {
+    bool is_clear                                 =   1; // サーバー時刻をクリアするか.
+    int64 to_set_server_time                      =   2; // 設定するサーバー時刻(エポック秒).
+}
+
+// デバッグ/サーバー時刻設定 レスポンス.
+message DebugSetServerTimeResponse {
+}
+
+
+//====================================================================
+// デバッグ/テスト リクエスト.
+message DebugTestRequest {
+    string message                                =   1; // .
+}
+
+// デバッグ/テスト レスポンス.
+message DebugTestResponse {
+    string message                                =   1; // .
+}

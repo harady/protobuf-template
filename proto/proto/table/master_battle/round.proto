@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2018/12/23
+// ラウンド情報.
+message RoundData {
+    int64 id                                      =   1;
+    string name                                   =   2; // ラウンド名.
+    int64 stage_id                                =   3; // このラウンドが含まれるステージのID.
+    int64 round_no                                =   4; // ラウンド番号.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+    reserved "index:stage_id";
+}

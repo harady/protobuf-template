@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2018/12/23
+// ユーザーランク-経験値情報
+message UserRankExpData {
+    int64 id                             =   1;
+    int64 rank                           =   2; // ランク.
+    int64 total_exp                      =   3; // 累計経験値.
+    int64 max_stamina                    =   4; // 最大スタミナ.
+    int64 deck_num                       =   5; // デッキ数.
+    int64 max_friend_num                 =   6; // 最大フレンド数.
+    int64 unit_box_num                   =   7; // ユニットボックス枠.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+    reserved "unique_index:rank";
+}
+

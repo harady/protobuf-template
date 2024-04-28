@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state:OK 2018/12/23
+// ユニットのレベル-経験値テーブル.
+message UnitLevelExpData {
+    int64 id                             =   1; // id.
+    int64 growth_type                    =   2; // 成長タイプ.
+    int64 level                          =   3; // レベル.
+    int64 total_exp                      =   4; // 指定したレベルにアップするのに必要な累積経験値.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+    reserved "index:growth_type";
+    reserved "index:level";
+}

@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
+using MessagePack;
+
+namespace AwsDotnetCsharp
+{
+{{- for message in file.message_type }}
+	{{- has_id = (message.field[0].name == "id") }}
+	[BsonIgnoreExtraElements]
+	[DataContract]
+	public partial class {{ message.name }} : AbstractData
+	{
+		[BsonId]
+		public ObjectId _id { get; set; }
+{{- for field in message.field }}
+		[BsonElement("{{ field.name | to_camel }}")]
+		[DataMember(Name = "{{ field.name | to_camel }}")]
+	{{- if (field | is_repeated) }}
+		public List<{{ field | to_cs_type }}> {{ field.name | to_camel }} { get; set; } = new List<{{ field | to_cs_type }}>();
+	{{- else }}
+		public {{ field | to_cs_type }} {{ field.name | to_camel }} { get; set; }
+	{{- end }}
+	{{- if (field.name | string.ends_with "_at") }}
+		[BsonIgnore]
+		public DateTime {{ field.name | to_pascal }} {
+			get { return DateTimeUtil.FromEpochTime({{ field.name | to_camel }}); }
+			set { {{ field.name | to_camel }} = value.ToEpochTime(); }
+		}
+	{{- end }}
+{{ end }}
+{{- if has_id -}}
+	{{- for field in message.field }}
+		{{- if (field.name == "name") }}
+
+		public string idNameText => GetIdNameText(id, name);
+	{{- end -}}
+{{ end }}
+{{- end }}
+	}
+{{ end -}}
+}

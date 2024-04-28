@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "data/battle_user.proto";
+import "data/battle_init_deck.proto";
+import "table/master_battle/round.proto";
+import "table/battle/battle_init_enemy.proto";
+import "table/master_battle/enemy.proto";
+import "table/master_battle/enemy_action.proto";
+
+// state: OK 2019/12/28 TODO 定期的に見直す.
+// バトル開始時にクライアントに送信するバトル情報.
+message BattleClientData {
+    int64 stage_id                                          =   1; // ステージID.
+    int64 random_seed                                       =   2; // ランダムシード.
+    repeated BattleUserData battle_users                    =   3; // バトルに参加するユーザー情報.
+    BattleInitDeckData battle_init_deck                     =   4; // デッキ初期情報.
+    repeated RoundData rounds                               =   5; // ラウンド情報.
+    repeated BattleInitEnemyData battle_init_enemys         =   6; // 敵配置情報.
+    repeated EnemyData enemys                               =   7; // 敵ステータス情報.
+    repeated EnemyActionData enemy_actions                  =   8; // 敵アクション情報.
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/04/07
+// バトル後のアドバイス情報.
+message AdviceData {
+    int64 id                                      =   1;
+    string message                                =   2;
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+}

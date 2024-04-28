@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "enum/common.proto";
+
+// state: OK 2019/05/02 定期的に見直す
+// ステージ情報.
+message StageData {
+    int64 id                                                =   1;
+    string name                                             =   2; // ステージ名.
+    int64 quest_id                                          =   3; // このステージが含まれるクエストのID.
+    int64 stamina                                           =   4; // 消費スタミナ.
+    int64 earn_exp                                          =   5; // 獲得経験値.
+    int64 earn_money                                        =   6; // 獲得マネー.
+    QuestDifficultyType quest_difficulty_type               =   7; // クエスト難度種別.
+    int64 to_unlock_stage_id                                =   8; // 開放にクリアが必要なステージのstage.id(最初から開放されている場合は0).
+    int64 base_stage_id                                     =   9; // ベースのステージid.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+    reserved "index:quest_id";
+}

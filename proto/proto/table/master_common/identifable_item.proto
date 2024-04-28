@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: TODO
+// 識別可能アイテム種別.
+enum IdentifableItemType {
+    IdentifableItemTypeNone                        =   0;
+    IdentifableItemTypeQuestTicket                 =   1; // クエストチケット [param_a:stage.id][param_b:-].
+}
+
+
+// state: TODO
+// 識別可能アイテム情報.
+message IdentifableItemData {
+    int64 id                                      =   1;
+    string name                                   =   2; // アイテム名.
+    string description                            =   3; // アイテムの説明.
+    IdentifableItemType type                      =   4; // アイテム種別.
+    int64 owned_limit                             =   5; // 所持上限.
+
+    reserved "tag:is_client_master";
+    reserved "primary_key:id";
+    reserved "index:type";
+}

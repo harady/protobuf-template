@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "data/battle_result_turn_log.proto";
+import "data/battle_result_replay_log.proto";
+
+// state: OK 2019/12/22 TODO 定期的に見直す.
+// バトル終了時にクライアントからサーバーに送信するバトル結果情報
+message BattleResultData {
+    int64 id                                                =   1; // .
+    repeated BattleResultTurnLogData turn_logs              =   2; // ターンログ情報.
+    repeated BattleResultReplayLogData replay_logs          =   3; // リプレイログ情報.
+}

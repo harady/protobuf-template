@@ -1,0 +1,41 @@
+﻿■file.message_type
+message.name:IdentifableItemData
+  field.name:id
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:name
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:description
+    field | to_cs_type:string
+    field.type:String
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+  field.name:type
+    field | to_cs_type:IdentifableItemType
+    field.type:Enum
+    field.type_name:.monstershot.IdentifableItemType
+    field.label:Optional
+    field | is_repeated:false
+  field.name:owned_limit
+    field | to_cs_type:long
+    field.type:Int64
+    field.type_name:
+    field.label:Optional
+    field | is_repeated:false
+
+■file.service
+■file.enum_type
+enum.name:IdentifableItemType
+  value.name:IdentifableItemTypeNone
+  value.number:0
+  value.name:IdentifableItemTypeQuestTicket
+  value.number:1
+

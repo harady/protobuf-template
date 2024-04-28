@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// state: TODO
+message CommonRequest {
+    string session_id                                       =   1; // セッション.
+}

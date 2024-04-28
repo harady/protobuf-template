@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "enum/common.proto";
+
+// state: OK 2019/04/13
+// リソース情報.
+message ResourceTypeIdData {
+    ResourceType resource_type                    =   1; // リソース種別.
+    int64 resource_id                             =   2; // リソース種別に対応したリソースのID.
+}

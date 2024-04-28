@@ -1,0 +1,11 @@
+﻿syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+<imports>
+
+// クライアントに渡されるマスターデータ.
+message ClientMasterData {
+<fields>
+}

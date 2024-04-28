@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "enum/common.proto";
+import "data/resource.proto";
+
+// state: OK 2019/05/02.
+// バトル報酬情報で獲得できるリソースとタグ情報.
+message BattleRewardResourceData {
+    ResourceData resource                                   =   1; // 報酬リソース.
+    BattleRewardType type                                   =   2; // 報酬種別.
+    int64 param                                              =   3; // パラメータ.
+    string tag                                              =   4; // 報酬タグ.
+}

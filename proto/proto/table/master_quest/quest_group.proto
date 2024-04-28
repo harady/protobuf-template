@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// クエストグループ種別.
+enum QuestGroupType {
+    QuestGroupTypeNone                  =   0;
+    QuestGroupTypeNormal                =   1; // ノーマル.
+    QuestGroupTypeEvent                 =   2; // イベント.
+    QuestGroupTypeHasha                 =   3; // 覇者の塔.
+    QuestGroupTypeShinju                =   4; // 神獣の聖域.
+    QuestGroupTypeHirameki              =   5; // 閃きの闘技場.
+    QuestGroupTypeShoko                 =   6; // 封印の書庫.
+    QuestGroupTypeShinden               =   7; // 英雄の神殿.
+    QuestGroupTypeKinki                 =   8; // 禁忌の獄.
+}
+
+// state: OK 2018/12/23
+// クエストグループ情報.
+message QuestGroupData {
+    int64 id                                      =   1;
+    string name                                   =   2; // クエスト名.
+    QuestGroupType type                           =   3; // グループ種別.
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+    reserved "index:type";
+}

@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package monstershot;
+
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2018/12/23
+// ユーザーステージ情報.
+message UserStageData {
+    int64 id                                       =   1;
+    int64 user_id                                =   2; // ユーザーID.
+    int64 stage_id                                 =   3; // ステージID.
+    int64 clear_count                              =   4; // クリア回数.
+    int64 failed_count                             =   5; // 失敗回数.
+    int64 best_clear_time                          =   6; // 最速クリアタイム.
+
+    reserved "primary_key:id";
+    reserved "index:user_id";
+    reserved "unique_index:stage_id";
+    reserved "tag:is_client_user_data";
+}

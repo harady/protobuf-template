@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/07/15
+// バックアップ種別.
+enum BackupType {
+    BackupTypeNone                                =   0;
+    BackupTypeCode                                =   1; // 引き継ぎコード.
+    BackupTypeTwitter                             =   2; // Twitter.
+    BackupTypeLine                                =   3; // Line.
+}
+
+// state: OK 2019/07/15
+// プレイヤーバックアップ情報.
+message UserBackupData {
+    int64 id                                       =   1;
+    int64 user_id                                =   2; // ユーザーID.
+    BackupType backup_type                         =   3; // バックアップ種別.
+    string backup_token                            =   4; // 引き継ぎトークン.
+
+    reserved "primary_key:id";
+    reserved "index:user_id";
+    reserved "unique_index:backup_type";
+    reserved "index:backup_token";
+    reserved "tag:is_client_user_data";
+}

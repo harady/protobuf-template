@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// state: OK 2019/11/17
+// ResourceLottery情報.
+message ResourceLotteryData {
+    int64 id                             =   1;
+    string name                          =   2; // リソース抽選情報名.
+    bool has_empty                       =   3; // ハズレ有りフラグ.
+
+    reserved "tag:is_client_master";
+    reserved "primary_key:id";
+}

@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "enum/common.proto";
+
+// state: OK 2018/12/23
+// クエスト情報.
+message QuestData {
+    int64 id                                                =   1;
+    string name                                             =   2; // クエスト名.
+    int64 quest_group_id                                    =   3; // このクエストが含まれるクエストグループのID.
+    bool noContinue                                         =   4; // コンティニュー不可(0:可能 1:不可).
+    QuestDifficultyType quest_difficulty_type               =   5; // クエスト難度種別.
+    int64 boss_unit_id                                      =   6; // ボスユニットの[unit.id].
+    int64 open_at                                           =   7; // 開始日時.
+    int64 close_at                                          =   8; // 終了日時.
+    int64 open_dow                                          =   9; // 開催曜日(0:全曜日開催,1:日,2:月,4:火,8:水,16:木,32:金,64:土).
+
+    reserved "primary_key:id";
+    reserved "tag:is_client_master";
+    reserved "index:quest_group_id";
+}

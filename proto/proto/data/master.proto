@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+import "data/client_master.proto";
+import "table/master_battle/enemy_cluster.proto";
+import "table/master_battle/enemy_mapping.proto";
+import "table/master_event/event_quest_category.proto";
+import "table/master_event/event_schedule_term.proto";
+import "table/master_gacha/gacha_pool.proto";
+import "table/master_gacha/gacha_pool_item.proto";
+
+// サーバーでメモリキャッシュするマスターデータ.
+message MasterData {
+    ClientMasterData client_master                               =   1; // .
+    repeated EnemyClusterData enemy_clusters                          =   2; // .
+    repeated EnemyMappingData enemy_mappings                          =   3; // .
+    repeated EventQuestCategoryData event_quest_categorys             =   4; // .
+    repeated EventScheduleTermData event_schedule_terms               =   5; // .
+    repeated GachaPoolData gacha_pools                                =   6; // .
+    repeated GachaPoolItemData gacha_pool_items                       =   7; // .
+}

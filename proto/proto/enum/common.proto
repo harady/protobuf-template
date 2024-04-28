@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package monstershot;
+option csharp_namespace = "MonsterShot";
+
+// 課金プラットフォーム種別.
+enum PurchasePlatformType {
+    PurchasePlatformTypeNone                      =   0; // .
+    PurchasePlatformTypeGooglePlay                =   1; // GooglePlay.
+    PurchasePlatformTypeAppleAppStore             =   2; // AppleAppStore.
+    PurchasePlatformTypeDebug                     =  99; // デバッグ用.
+}
+
+// リソースタイプ.
+enum ResourceType {
+    ResourceTypeNone                              =   0; // なし.
+    ResourceTypeUnit                              =   1; // ユニット[id:unit.id][amount:ラック](消費/獲得).
+    ResourceTypeItem                              =   2; // アイテム[id:item.id][amount:個数](消費/獲得).
+    ResourceTypeMoney                             =   3; // ゲーム内通貨[id:-][amount:数量](消費/獲得).
+    ResourceTypeStaminaFix                        =   4; // スタミナ固定値[id:-][amount:スタミナ値](消費/獲得).
+    ResourceTypeStaminaRate                       =   5; // スタミナ割合[id:-][amount:全快スタミナに対する割合(千分率)](消費/獲得).
+    ResourceTypeFreeCrystal                       =  98; // 課金石(無償)[id:-][amount:数量](消費/獲得).
+    ResourceTypePaidCrystal                       =  99; // 課金石(有償)[id:-][amount:数量](消費/獲得).
+
+    ResourceTypeUserUnit                          = 101; // プレーヤーユニット[id:user_unit.id][amount:-](消費専用).
+    ResourceTypeCrystal                           = 199; // 課金石(無償&有償)[id:-][amount:数量](消費専用).
+
+    ResourceTypeMaxStaminaPlus                    = 201; // 最大スタミナ拡張数[id:-][amount:拡張数](獲得専用).
+    ResourceTypeMaxDeckPlus                       = 202; // 最大デッキ拡張数[id:-][amount:拡張数](獲得専用).
+    ResourceTypeMaxFriendPlus                     = 203; // 最大フレンド拡張数[id:-][amount:拡張数](獲得専用).
+    ResourceTypeMaxBoxPlus                        = 204; // 最大ユニット所持拡張数[id:-][amount:拡張数](獲得専用).
+
+    ResourceTypeResourceSet                       = 301; // リソースセット[id:resource_set.id][amount:セット数](獲得専用).
+    ResourceTypeResourceLottery                   = 302; // リソース抽選[id:resource_lottery.id][amount:抽選数](獲得専用).
+}
+
+// クエスト難度種別.
+enum QuestDifficultyType {
+    QuestDifficultyTypeNone                       =   0; // なし.
+    QuestDifficultyTypeEasy                       =   1; // 初級.
+    QuestDifficultyTypeNormal                     =   2; // 中級.
+    QuestDifficultyTypeHard                       =   3; // 上級.
+    QuestDifficultyTypeKiwami                     =   4; // 極.
+    QuestDifficultyTypeKyukyokuRare4              =   5; // 究極★4制限.
+    QuestDifficultyTypeKyukyoku                   =   6; // 究極.
+    QuestDifficultyTypeGekiKyukyoku               =   7; // 激究極.
+    QuestDifficultyTypeEx                         =   8; // EX.
+    QuestDifficultyTypeChoKyukyoku                =   9; // 超究極.
+    QuestDifficultyTypeChoZetsu                   =  10; // 超絶.
+    QuestDifficultyTypeBakuZetsu                  =  11; // 爆絶.
+    QuestDifficultyTypeGouZetsu                   =  12; // 轟絶.
+    QuestDifficultyTypeOther                      = 100; // その他.
+}
+
+// state: OK 2019/11/24
+// バトル報酬種別.
+enum BattleRewardType {
+    BattleRewardTypeNone                          =    0;
+    BattleRewardTypeNormal                        =    1; // クリア報酬.
+    BattleRewardTypeTotalTurn                     =    2; // スピードクリア報酬 [param_a:ターン数].
+    BattleRewardTypeNoContinue                    =    3; // ノーコンティニュー報酬.
+    BattleRewardTypeLuckBonus                     =    4; // ラックボーナス報酬.
+    BattleRewardTypeFirstClear                    =    5; // 初回クリア報酬.
+    BattleRewardTypeClearCount                    =    6; // 回数クリア報酬 [param_a:クリア回数].
+    BattleRewardTypeSpecialRewardSet              = 1000; // スペシャル報酬基本セット [param_a:スピクリターン数].
+}
