@@ -24,7 +24,7 @@ namespace protoc_gen_myplugincsharp
 			var hasBom = BomChecker.HasBom(templatePath);
 			var bom = hasBom ? utf8.GetString(utf8.GetPreamble()) : "";
 
-
+			// テンプレートを読み込み.
 			var templateStr = File.ReadAllText(templatePath, Encoding.UTF8);
 			var template = Template.Parse(templateStr);
 
@@ -34,11 +34,13 @@ namespace protoc_gen_myplugincsharp
 			var outputFileDescs = request.ProtoFile
 				.Where(file => fileToGenerates.Contains(file.Name));
 
-
-			var fileSuffix 
+			// 出力ファイル名のサフィックス指定を取得.
+			var fileSuffix
 				= paramDict.GetValueOrDefault("fileSuffix", "").ToString();
+			// 出力ファイル名のケース指定を取得.
 			var fileNameCase
 				= paramDict.GetValueOrDefault("outFileCase", "Pascal").ToString();
+			// 出力ファイル名のプレフィックスを取得.
 			foreach (var fileDesc in outputFileDescs) {
 				var filePrefix = Path.GetFileNameWithoutExtension(fileDesc.Name);
 				if (fileNameCase == "Pascal") {
@@ -55,7 +57,10 @@ namespace protoc_gen_myplugincsharp
 
 				var filename = filePrefix + fileSuffix;
 
-				var model = new { File = fileDesc };
+				var model = new {
+					File = fileDesc,
+					Files = request.ProtoFile
+				};
 				var scriptObject = new ScriptObject();
 				CustomFunctions.SetupCustomFunction(scriptObject);
 				scriptObject.Import(model);
@@ -68,7 +73,8 @@ namespace protoc_gen_myplugincsharp
 
 				// set as response
 				response.File.Add(
-					new CodeGeneratorResponse.Types.File() {
+					new CodeGeneratorResponse.Types.File()
+					{
 						Name = filename,
 						Content = bom + output,
 					}
