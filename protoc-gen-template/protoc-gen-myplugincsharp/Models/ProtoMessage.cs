@@ -7,6 +7,7 @@ public class ProtoMessage
 
 	public string Name { get; set; } = string.Empty;
 	public List<ProtoField> Field { get; set; } = new();
+	public List<ProtoField> Fields => Field;
 	public List<ProtoField> Extension { get; set; } = new();
 	public List<ProtoMessage> NestedType { get; set; } = new();
 	public List<ProtoEnum> EnumType { get; set; } = new();
@@ -38,5 +39,22 @@ public class ProtoMessage
 		Options = data.Options;
 		ReservedRange = data.ReservedRange.ToList();
 		ReservedName = data.ReservedName.ToList();
+	}
+
+	public List<ProtoField> DeepFields
+	{
+		get
+		{
+			var result = new List<ProtoField>();
+			Fields.ForEach(field =>
+			{
+				if (field.IsMessage) {
+					result.AddRange(field.Message.DeepFields);
+				} else {
+					result.Add(field);
+				}
+			});
+			return result;
+		}
 	}
 }

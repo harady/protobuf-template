@@ -34,4 +34,8 @@ public class ProtoField
 		Options = data.Options;
 		Proto3Optional = data.Proto3Optional;
 	}
+
+	public ProtoMessage Message => Root.GetMessageByName(Name);
+
+	public bool IsMessage => Message != null;
 }
