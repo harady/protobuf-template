@@ -24,7 +24,7 @@ namespace protoc_gen_myplugincsharp
 			var hasBom = BomChecker.HasBom(templatePath);
 			var bom = hasBom ? utf8.GetString(utf8.GetPreamble()) : "";
 
-
+			// テンプレートを読み込み.
 			var templateStr = File.ReadAllText(templatePath, Encoding.UTF8);
 			var template = Template.Parse(templateStr);
 
@@ -34,28 +34,27 @@ namespace protoc_gen_myplugincsharp
 			var outputFileDescs = request.ProtoFile
 				.Where(file => fileToGenerates.Contains(file.Name));
 
-
-			var fileSuffix 
+			// 出力ファイル名のサフィックス指定を取得.
+			var fileSuffix
 				= paramDict.GetValueOrDefault("fileSuffix", "").ToString();
+			// 出力ファイル名のケース指定を取得.
 			var fileNameCase
 				= paramDict.GetValueOrDefault("outFileCase", "Pascal").ToString();
+			// 出力ファイル名のプレフィックスを取得.
 			foreach (var fileDesc in outputFileDescs) {
 				var filePrefix = Path.GetFileNameWithoutExtension(fileDesc.Name);
-				if (fileNameCase == "Pascal") {
-					filePrefix = filePrefix.ToPascalCase();
-				} else if (fileNameCase == "Camel") {
-					filePrefix = filePrefix.ToCamelCase();
-				} else if (fileNameCase == "Snake") {
-					filePrefix = filePrefix.ToSnakeCase();
-				} else if (fileNameCase == "UpperSnake") {
-					filePrefix = filePrefix.ToUpperSnakeCase();
-				} else {
-					filePrefix = filePrefix.ToPascalCase();
-				}
+				filePrefix = ConvertCase(filePrefix, fileNameCase);
 
 				var filename = filePrefix + fileSuffix;
 
-				var model = new { File = fileDesc };
+				var model = new ProtoModel(
+					fileDesc,
+					request.ProtoFile.ToList());
+				//var model = new
+				//{
+				//	File = fileDesc,
+				//	Files = request.ProtoFile
+				//};
 				var scriptObject = new ScriptObject();
 				CustomFunctions.SetupCustomFunction(scriptObject);
 				scriptObject.Import(model);
@@ -68,7 +67,8 @@ namespace protoc_gen_myplugincsharp
 
 				// set as response
 				response.File.Add(
-					new CodeGeneratorResponse.Types.File() {
+					new CodeGeneratorResponse.Types.File()
+					{
 						Name = filename,
 						Content = bom + output,
 					}
@@ -79,6 +79,23 @@ namespace protoc_gen_myplugincsharp
 			using (var stdout = Console.OpenStandardOutput()) {
 				response.WriteTo(stdout);
 			}
+		}
+
+		static string ConvertCase(string target, string caseName)
+		{
+			var result = target;
+			if (caseName == "Pascal") {
+				result = result.ToPascalCase();
+			} else if (caseName == "Camel") {
+				result = result.ToCamelCase();
+			} else if (caseName == "Snake") {
+				result = result.ToSnakeCase();
+			} else if (caseName == "UpperSnake") {
+				result = result.ToUpperSnakeCase();
+			} else {
+				result = result.ToPascalCase();
+			}
+			return result;
 		}
 
 		static Dictionary<string, object> ParseParameter(string parameter)

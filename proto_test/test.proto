@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package test;
+
+option csharp_namespace = "Test.Models.Data";
+option go_package       = "test.com";
+
+message TestData {
+    double param1 = 1; // .
+    float param2 = 2; // .
+    int64 param3 = 3; // .
+    uint64 param4 = 4; // .
+    int32 param5 = 5; // .
+    fixed64 param6 = 6; // .
+    fixed32 param7 = 7; // .
+    bool param8 = 8; // .
+    string param9 = 9; // .
+//    group param10 = 10; // .
+    TestSubData param11 = 11; // .
+    bytes param12 = 12; // .
+    uint32 param13 = 13; // .
+    TestEnum param14 = 14; // .
+    sfixed32 param15 = 15; // .
+    sfixed64 param16 = 16; // .
+    sint32 param17 = 17; // .
+    sint64 param18 = 18; // .
+}
+
+enum TestEnum {
+    TEST_ENUM_NONE     = 0; // 
+    TEST_ENUM_VAL_A    = 1; // 
+    TEST_ENUM_VAL_B    = 2; // 
+    TEST_ENUM_VAL_C    = 3; // 
+    TEST_ENUM_VAL_D    = 4; // 
+    TEST_ENUM_VAL_E    = 5; // 
+}
+
+message TestSubData {
+    int64 sub_param1 = 1; // .
+    int64 sub_param2 = 2; // .
+    int64 sub_param3 = 3; // .
+    int64 sub_param4 = 4; // .
+}
+

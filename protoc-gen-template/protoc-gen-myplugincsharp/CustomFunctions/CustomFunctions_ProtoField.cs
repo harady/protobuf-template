@@ -2,22 +2,20 @@
 using Google.Protobuf.Reflection;
 using Scriban.Runtime;
 
-public class CustomFunctions_FieldDescriptorProto
+public class CustomFunctions_ProtoField
 {
 	/// <summary>
 	/// このフィールドのC#における型を取得する.
 	/// </summary>
-	public static string ToCsType(FieldDescriptorProto param)
+	public static string ToCsType(ProtoField param)
 	{
-		return param.HasTypeName
-			? CustomFunctions_String.ToShortName(param.TypeName)
-			: param.Type.ToCsTypeName();
+		return param.ShortTypeName;
 	}
 
 	/// <summary>
 	/// このフィールドにRepeatedラベルが付いているか否かを取得する.
 	/// </summary>
-	public static bool IsRepeated(FieldDescriptorProto param)
+	public static bool IsRepeated(ProtoField param)
 	{
 		return param.Label == FieldDescriptorProto.Types.Label.Repeated;
 	}
@@ -25,7 +23,7 @@ public class CustomFunctions_FieldDescriptorProto
 	/// <summary>
 	/// このフィールドのRubyにおける型を取得する.
 	/// </summary>
-	public static string ToRbType(FieldDescriptorProto param)
+	public static string ToRbType(ProtoField param)
 	{
 		return param.HasTypeName
 			? CustomFunctions_String.ToShortName(param.TypeName)
@@ -35,7 +33,7 @@ public class CustomFunctions_FieldDescriptorProto
 	/// <summary>
 	/// このフィールドのRubyにおける型のデフォルト値を取得する.
 	/// </summary>
-	public static string ToRbTypeDefault(FieldDescriptorProto param)
+	public static string ToRbTypeDefault(ProtoField param)
 	{
 		return param.HasTypeName
 			? $"{CustomFunctions_String.ToShortName(param.TypeName)}.new"
@@ -45,15 +43,15 @@ public class CustomFunctions_FieldDescriptorProto
 	public static void SetupCustomFunction(ScriptObject target)
 	{
 		target.Import("to_cs_type",
-			new Func<FieldDescriptorProto, string>(type => ToCsType(type)));
+			new Func<ProtoField, string>(type => ToCsType(type)));
 
 		target.Import("is_repeated",
-			new Func<FieldDescriptorProto, bool>(type => IsRepeated(type)));
+			new Func<ProtoField, bool>(type => IsRepeated(type)));
 
 		target.Import("to_rb_type",
-			new Func<FieldDescriptorProto, string>(type => ToRbType(type)));
+			new Func<ProtoField, string>(type => ToRbType(type)));
 		target.Import("to_rb_type_default",
-			new Func<FieldDescriptorProto, string>(type => ToRbTypeDefault(type)));
+			new Func<ProtoField, string>(type => ToRbTypeDefault(type)));
 
 	}
 }
