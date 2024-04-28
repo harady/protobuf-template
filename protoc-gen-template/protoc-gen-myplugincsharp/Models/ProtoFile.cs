@@ -21,10 +21,9 @@ public class ProtoFile
 	public List<ProtoService> Services => Service;
 
 	public List<ProtoField> Extension { get; set; } = new();
-	public Google.Protobuf.Reflection.FileOptions FileOptions { get; set; }
+	public Google.Protobuf.Reflection.FileOptions Options { get; set; }
 	public SourceCodeInfo SourceCodeInfo { get; set; } = new();
 	public string Syntax { get; set; } = string.Empty;
-	public UnknownFieldSet UnknownFieldSet { get; set; }
 
 	public ProtoFile(ProtoModel root, FileDescriptorProto data)
 	{
@@ -34,21 +33,20 @@ public class ProtoFile
 		Dependency = data.Dependency.ToList();
 		PublicDependency = data.PublicDependency.ToList();
 		WeakDependency = data.WeakDependency.ToList();
-
 		MessageType = data.MessageType
 			.Select(message => new ProtoMessage(Root, message))
 			.ToList();
-
 		EnumType = data.EnumType
 			.Select(enumType => new ProtoEnum(Root, enumType))
 			.ToList();
-
 		Service = data.Service
 			.Select(service => new ProtoService(Root, service))
 			.ToList();
-
 		Extension = data.Extension
 			.Select(field => new ProtoField(Root, field))
 			.ToList();
+		Options = data.Options;
+		SourceCodeInfo = data.SourceCodeInfo;
+		Syntax = data.Syntax;
 	}
 }

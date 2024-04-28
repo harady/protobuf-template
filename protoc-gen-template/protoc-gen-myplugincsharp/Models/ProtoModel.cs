@@ -14,6 +14,5 @@ public class ProtoModel
 	{
 		File = new ProtoFile(this, file);
 		Files = files.Select(file => new ProtoFile(this, file)).ToList();
-		Files = files.Select(file => new ProtoFile(this, file)).ToList();
 	}
 }
