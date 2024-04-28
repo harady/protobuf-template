@@ -16,6 +16,8 @@ public class ProtoField
 	public FieldOptions Options { get; set; }
 	public bool Proto3Optional { get; set; }
 
+	public bool HasTypeName => !TypeName.IsNullOrEmpty();
+
 	public ProtoField(ProtoModel root, FieldDescriptorProto data)
 	{
 		Root = root;
