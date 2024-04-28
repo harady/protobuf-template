@@ -23,4 +23,9 @@ public class ProtoEnum
 		ReservedRange = data.ReservedRange.ToList();
 		ReservedName = data.ReservedName.ToList();
 	}
+
+	public ProtoEnum Clone()
+	{
+		return (ProtoEnum)MemberwiseClone();
+	}
 }

@@ -49,4 +49,9 @@ public class ProtoFile
 		SourceCodeInfo = data.SourceCodeInfo;
 		Syntax = data.Syntax;
 	}
+
+	public ProtoFile Clone()
+	{
+		return (ProtoFile)MemberwiseClone();
+	}
 }

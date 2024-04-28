@@ -9,9 +9,7 @@ public class CustomFunctions_ProtoField
 	/// </summary>
 	public static string ToCsType(ProtoField param)
 	{
-		return param.HasTypeName
-			? CustomFunctions_String.ToShortName(param.TypeName)
-			: param.Type.ToCsTypeName();
+		return param.ShortTypeName;
 	}
 
 	/// <summary>

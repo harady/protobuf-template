@@ -18,4 +18,9 @@ public class ProtoService
 			.ToList();
 		Options = data.Options;
 	}
+
+	public ProtoService Clone()
+	{
+		return (ProtoService)MemberwiseClone();
+	}
 }

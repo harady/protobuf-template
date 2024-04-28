@@ -49,12 +49,22 @@ public class ProtoMessage
 			Fields.ForEach(field =>
 			{
 				if (field.IsMessage) {
-					result.AddRange(field.Message.DeepFields);
+					var fields = field.Message.DeepFields
+						.Select(field2 => field2.Clone())
+						.ToList();
+					fields
+						.ForEach(field2 => field2.Name = $"{field.Name}.{field2.Name}");
+					result.AddRange(fields);
 				} else {
 					result.Add(field);
 				}
 			});
 			return result;
 		}
+	}
+
+	public ProtoMessage Clone()
+	{
+		return (ProtoMessage)MemberwiseClone();
 	}
 }

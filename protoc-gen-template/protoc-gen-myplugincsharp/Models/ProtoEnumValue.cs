@@ -17,4 +17,8 @@ public class ProtoEnumValue
 		Options = data.Options;
 	}
 
+	public ProtoEnumValue Clone()
+	{
+		return (ProtoEnumValue)MemberwiseClone();
+	}
 }

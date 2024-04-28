@@ -35,7 +35,22 @@ public class ProtoField
 		Proto3Optional = data.Proto3Optional;
 	}
 
-	public ProtoMessage Message => Root.GetMessageByName(Name);
+	public ProtoField Clone()
+	{
+		return (ProtoField)MemberwiseClone();
+	}
+
+	public string ShortTypeName
+	{
+		get
+		{
+			return HasTypeName
+				? CustomFunctions_String.ToShortName(TypeName)
+				: Type.ToCsTypeName();
+		}
+	}
+
+	public ProtoMessage Message => Root.GetMessageByName(ShortTypeName);
 
 	public bool IsMessage => Message != null;
 }

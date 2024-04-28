@@ -22,4 +22,9 @@ public class ProtoMethod
 		ClientStreaming = data.ClientStreaming;
 		ServerStreaming = data.ServerStreaming;
 	}
+
+	public ProtoMethod Clone()
+	{
+		return (ProtoMethod)MemberwiseClone();
+	}
 }

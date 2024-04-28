@@ -85,4 +85,9 @@ public class ProtoModel
 		File = new ProtoFile(this, file);
 		Files = files.Select(file => new ProtoFile(this, file)).ToList();
 	}
+
+	public ProtoModel Clone()
+	{
+		return (ProtoModel)MemberwiseClone();
+	}
 }
