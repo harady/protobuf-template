@@ -6,22 +6,25 @@ public class ProtoModel
 	public List<ProtoFile> Files { get; set; }
 
 
-	private List<ProtoMessage> _messages = null;
-	private List<ProtoMessage> Messages
-	{
-		get
-		{
-			if (_messages == null) {
-				_messages = Files.SelectMany(file => file.Messages.ToList()).ToList();
-			}
-			return _messages;
-		}
-	}
-
 	private Dictionary<string, ProtoMessage> _messageDict = null;
 
 	private Dictionary<string, ProtoMessage> MessageDict
-		=> _messageDict ?? (_messageDict = Messages.ToDictionary(val => val.Name));
+	{
+		get
+		{
+			if (_messageDict == null) {
+				var messages = Files
+					.SelectMany(file => file.Messages.ToList());
+				_messageDict = messages.ToDictionary(val => val.Name);
+			}
+			return _messageDict;
+		}
+	}
+
+	public ProtoMessage GetMessageByName(string name)
+	{
+		return MessageDict.GetValueOrDefault(name);
+	}
 
 
 	private List<ProtoEnum> _enums = null;
@@ -39,19 +42,43 @@ public class ProtoModel
 	private Dictionary<string, ProtoEnum> _enumDict = null;
 
 	private Dictionary<string, ProtoEnum> EnumDict
-		=> _enumDict ?? (_enumDict = Enums.ToDictionary(val => val.Name));
+	{
+		get
+		{
+			if (_enumDict == null) {
+				var enums = Files
+					.SelectMany(file => file.Enums.ToList());
+				_enumDict = enums.ToDictionary(val => val.Name);
+			}
+			return _enumDict;
+		}
+	}
 
+	public ProtoEnum GetEnumByName(string name)
+	{
+		return EnumDict.GetValueOrDefault(name);
+	}
 
-	private List<ProtoService> _services = null;
-	private List<ProtoService> Services
-		=> _services
-		?? (_services = Files.SelectMany(file => file.Services.ToList()).ToList());
 
 	private Dictionary<string, ProtoService> _serviceDict = null;
 
 	private Dictionary<string, ProtoService> ServiceDict
-		=> _serviceDict ?? (_serviceDict = Services.ToDictionary(val => val.Name));
+	{
+		get
+		{
+			if (_serviceDict == null) {
+				var services = Files
+					.SelectMany(file => file.Services.ToList());
+				_serviceDict = services.ToDictionary(val => val.Name);
+			}
+			return _serviceDict;
+		}
+	}
 
+	public ProtoService GetServiceByName(string name)
+	{
+		return ServiceDict.GetValueOrDefault(name);
+	}
 
 	public ProtoModel(FileDescriptorProto file, List<FileDescriptorProto> files)
 	{
