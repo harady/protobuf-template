@@ -20,7 +20,7 @@ public class ProtoFile
 	public List<ProtoService> Service { get; set; } = new();
 	public List<ProtoService> Services => Service;
 
-	public List<FieldDescriptorProto> Extension { get; set; } = new();
+	public List<ProtoField> Extension { get; set; } = new();
 	public Google.Protobuf.Reflection.FileOptions FileOptions { get; set; }
 	public SourceCodeInfo SourceCodeInfo { get; set; } = new();
 	public string Syntax { get; set; } = string.Empty;
@@ -36,11 +36,19 @@ public class ProtoFile
 		WeakDependency = data.WeakDependency.ToList();
 
 		MessageType = data.MessageType
-			.Select(message => new ProtoMessage(root, message))
+			.Select(message => new ProtoMessage(Root, message))
 			.ToList();
 
 		EnumType = data.EnumType
-			.Select(enumType => new ProtoEnum(root, enumType))
+			.Select(enumType => new ProtoEnum(Root, enumType))
+			.ToList();
+
+		Service = data.Service
+			.Select(service => new ProtoService(Root, service))
+			.ToList();
+
+		Extension = data.Extension
+			.Select(field => new ProtoField(Root, field))
 			.ToList();
 	}
 }
