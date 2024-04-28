@@ -2,8 +2,10 @@
 
 public class ProtoService
 {
-	public ProtoService(ProtoService data)
-	{
+	public ProtoModel Root { get; set; }
 
+	public ProtoService(ProtoModel root, ProtoService data)
+	{
+		Root = root;
 	}
 }

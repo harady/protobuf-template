@@ -2,8 +2,11 @@
 
 public class ProtoEnum
 {
-	public ProtoEnum(EnumDescriptorProto data)
+	public ProtoModel Root { get; set; }
+
+	public ProtoEnum(ProtoModel root, EnumDescriptorProto data)
 	{
+		Root = root;
 	}
 
 }

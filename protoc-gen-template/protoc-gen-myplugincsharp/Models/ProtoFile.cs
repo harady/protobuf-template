@@ -35,5 +35,12 @@ public class ProtoFile
 		PublicDependency = data.PublicDependency.ToList();
 		WeakDependency = data.WeakDependency.ToList();
 
+		MessageType = data.MessageType
+			.Select(message => new ProtoMessage(root, message))
+			.ToList();
+
+		EnumType = data.EnumType
+			.Select(enumType => new ProtoEnum(root, enumType))
+			.ToList();
 	}
 }
