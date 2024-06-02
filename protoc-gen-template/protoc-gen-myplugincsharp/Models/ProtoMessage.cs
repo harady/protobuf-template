@@ -16,6 +16,7 @@ public class ProtoMessage
 	public MessageOptions Options { get; set; }
 	public List<DescriptorProto.Types.ReservedRange> ReservedRange { get; set; } = new();
 	public List<string> ReservedName { get; set; } = new();
+	public List<ExtIndex> Indexs { get; set; } = new();
 
 	public ProtoMessage(ProtoModel root, DescriptorProto data)
 	{
@@ -39,15 +40,17 @@ public class ProtoMessage
 		Options = data.Options;
 		ReservedRange = data.ReservedRange.ToList();
 		ReservedName = data.ReservedName.ToList();
+
+		var uniqueIndexs = this.GetUniqueIndexs().Select(indexStr => new ExtIndex(this, indexStr, isUnique: true));
+		Indexs.AddRange(uniqueIndexs);
+		var indexs = this.GetIndexs().Select(indexStr => new ExtIndex(this, indexStr, isUnique: false));
+		Indexs.AddRange(indexs);
 	}
 
-	public List<ProtoField> DeepFields
-	{
-		get
-		{
+	public List<ProtoField> DeepFields {
+		get {
 			var result = new List<ProtoField>();
-			Fields.ForEach(field =>
-			{
+			Fields.ForEach(field => {
 				if (field.IsMessage) {
 					var fields = field.Message.DeepFields
 						.Select(field2 => field2.Clone())

@@ -2,10 +2,10 @@
 using Google.Protobuf.Reflection;
 using Scriban.Runtime;
 
-public class CustomFunctions_ProtoMessage
+public static class CustomFunctions_ProtoMessage
 {
 
-	private static List<string> GetOptions(ProtoMessage param, string optionName)
+	private static List<string> GetOptions(this ProtoMessage param, string optionName)
 	{
 		var result = new List<string>();
 		param.ReservedName
@@ -14,35 +14,35 @@ public class CustomFunctions_ProtoMessage
 		return result;
 	}
 
-	public static List<string> GetPrimaryKeys(ProtoMessage param)
+	public static List<string> GetPrimaryKeys(this ProtoMessage self)
 	{
-		return GetOptions(param, "primary_key");
+		return GetOptions(self, "primary_key");
 	}
 
-	public static List<string> GetIndexs(ProtoMessage param)
+	public static List<string> GetIndexs(this ProtoMessage self)
 	{
-		return GetOptions(param, "index");
+		return GetOptions(self, "index");
 	}
 
-	public static List<string> GetUniqueIndexs(ProtoMessage param)
+	public static List<string> GetUniqueIndexs(this ProtoMessage self)
 	{
-		return GetOptions(param, "unique_index");
+		return GetOptions(self, "unique_index");
 	}
 
-	public static List<string> GetTags(ProtoMessage param)
+	public static List<string> GetTags(this ProtoMessage self)
 	{
-		return GetOptions(param, "tag");
+		return GetOptions(self, "tag");
 	}
 
 	public static void SetupCustomFunction(ScriptObject target)
 	{
 		target.Import("get_primary_keys",
-			new Func<ProtoMessage, List<string>>(target => GetPrimaryKeys(target)));
+			new Func<ProtoMessage, List<string>>(target => target.GetPrimaryKeys()));
 		target.Import("get_indexs",
-			new Func<ProtoMessage, List<string>>(target => GetIndexs(target)));
+			new Func<ProtoMessage, List<string>>(target => target.GetIndexs()));
 		target.Import("get_unique_indexs",
-			new Func<ProtoMessage, List<string>>(target => GetUniqueIndexs(target)));
+			new Func<ProtoMessage, List<string>>(target => target.GetUniqueIndexs()));
 		target.Import("get_tags",
-			new Func<ProtoMessage, List<string>>(target => GetTags(target)));
+			new Func<ProtoMessage, List<string>>(target => target.GetTags()));
 	}
 }
