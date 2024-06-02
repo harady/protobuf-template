@@ -21,7 +21,14 @@ public class ExtIndex
 		IsUnique = isUnique;
 
 		fieldNames.ForEach(fieldName => {
-			var field = message.Fields.First(x => x.Name == fieldName);
+			var field = message.Fields.FirstOrDefault(x => x.Name == fieldName);
+			if (field == null) {
+				var fields = message.Fields.Select(field => field.Name).ToList();
+				throw new Exception($"インデックスで指定したフィールドがありません "
+				 + $"message:{message.Name} "
+				 + $"fieldName:{fieldName} "
+				 + $"message.Fields:{fields.ToCSV()}");
+			}
 			Fields.Add(field);
 		});
 

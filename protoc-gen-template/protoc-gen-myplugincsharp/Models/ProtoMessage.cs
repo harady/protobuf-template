@@ -41,9 +41,13 @@ public class ProtoMessage
 		ReservedRange = data.ReservedRange.ToList();
 		ReservedName = data.ReservedName.ToList();
 
-		var uniqueIndexs = this.GetUniqueIndexs().Select(indexStr => new ExtIndex(this, indexStr, isUnique: true));
+		var uniqueIndexs = this
+			.GetUniqueIndexs()
+			.Select(indexStr => new ExtIndex(this, indexStr, isUnique: true));
 		Indexs.AddRange(uniqueIndexs);
-		var indexs = this.GetIndexs().Select(indexStr => new ExtIndex(this, indexStr, isUnique: false));
+		var indexs = this
+			.GetIndexs()
+			.Select(indexStr => new ExtIndex(this, indexStr, isUnique: false));
 		Indexs.AddRange(indexs);
 	}
 

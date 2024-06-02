@@ -67,8 +67,7 @@ namespace protoc_gen_myplugincsharp
 
 				// set as response
 				response.File.Add(
-					new CodeGeneratorResponse.Types.File()
-					{
+					new CodeGeneratorResponse.Types.File() {
 						Name = filename,
 						Content = bom + output,
 					}
